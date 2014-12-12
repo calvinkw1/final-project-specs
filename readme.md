@@ -19,7 +19,7 @@ The objective of this project is:
 * **Rails or Node** You can build your app in Rails or Node.
 * **External APIs.** Use external APIs to add functionality to your app.
 * **Heroku.** Deploy your code to Heroku.
-* **Documentation** README.md contains purpose and description of app and code is commented
+* **Documentation** README.md contains purpose and description of app and code is commented.
 
 ## OPTIONAL ADD-ONS
 
