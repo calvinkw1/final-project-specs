@@ -9,7 +9,7 @@ The objective of this project is:
 
 
 ## CORE REQUIREMENTS
-* **Test It.** You must write request and model specs.
+* **Test It.** You must write request and feature specs.
 * **Authentication and Authentication** Your app will maintain user accounts and profiles. Login credentials must be validated before users can gain access to your application.
 * **Handles invalid data.** Forms in your application should validate data and handle incorrect inputs. Validate sign up information, verify valid email addresses and secure passwords.
 * **Partials.** Use partials to DRY (Don’t Repeat Yourself) up your views.
@@ -24,7 +24,7 @@ The objective of this project is:
 ## OPTIONAL ADD-ONS
 
 * **Angular.js** Incorporate Angular when building your app.
-* **Responsive Design** Use responsive design techniques to make your site beautiful on various screen sizes. Consider using Twitter Bootstrap to help with this.
+* **Responsive Design** Use responsive design techniques to make your site beautiful on various screen sizes. Consider using Twitter Bootstrap or another css framework to help with this.
 
 
 ## PLANNING & DELIVERABLES
@@ -48,8 +48,7 @@ Final project deliverables:
 
 ## TIMELINE
 
-* Monday, September 22nd - Project plan deliverables due. 
-* Thursday, September 25th at 10:00am - Final project deliverables due
+* Thursday, December 18th at 10:00am - Final project deliverables due
 
 ## WHAT WE ARE LOOKING FOR
 Make sure that your code is:
