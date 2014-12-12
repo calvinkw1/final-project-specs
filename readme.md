@@ -10,16 +10,16 @@ The objective of this project is:
 
 ## CORE REQUIREMENTS
 * **Test It.** You must write request and feature specs.
-* **Authentication and Authorization** Your app will maintain user accounts and profiles. Login credentials must be validated before users can gain access to your application.
+* **Authentication and Authorization.** Your app will maintain user accounts and profiles. Login credentials must be validated before users can gain access to your application.
 * **Handles invalid data.** Forms in your application should validate data and handle incorrect inputs. Validate sign up information, verify valid email addresses and secure passwords.
 * **Partials.** Use partials to DRY (Don’t Repeat Yourself) up your views.
-* **JavaScript & jQuery** Spice up the front-end of your app and have some event driven functionality. Pick framework(s) and/or library(s) to improve your js codebase cleanliness, DRYness, and maintanability. If you want to write a JSON API with Rails, and build your frontend as a pure JS app, then go for it.
+* **JavaScript & jQuery.** Spice up the front-end of your app and have some event driven functionality. Pick framework(s) and/or library(s) to improve your js codebase cleanliness, DRYness, and maintanability. If you want to write a JSON API with Rails, and build your frontend as a pure JS app, then go for it.
 * **CSS & Styling** 
 * **AJAX.** Use AJAX to communicate with the server without reloading the page. Some things to consider might be validating or saving form input.
-* **Rails or Node** You can build your app in Rails or Node.
+* **Rails or Node.** You can build your app in Rails or Node.
 * **External APIs.** Use external APIs to add functionality to your app.
 * **Heroku.** Deploy your code to Heroku.
-* **Documentation** README.md contains purpose and description of app and code is commented.
+* **Documentation.** README.md contains purpose and description of app and code is commented.
 
 ## OPTIONAL ADD-ONS
 
