@@ -41,7 +41,8 @@ and code is commented.
 
 ## OPTIONAL ADD-ONS
 
-* **Angular.js** Incorporate Angular when building your app.
+* **Socket.IO** Incorporate Socket.IO when building your app.
+* **Underscore.js** Impress us with your newfound Underscore.js knowledge.
 * **Responsive Design** Use responsive design techniques to make your
   site beautiful on various screen sizes. Consider using Twitter
   Bootstrap or another css framework to help with this.
