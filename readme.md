@@ -38,7 +38,7 @@ views.
 * **Socket.IO** Incorporate Socket.IO when building your app.
 * **Underscore.js** Impress us with your newfound Underscore.js knowledge.
 * Frontend framework to organize your js code. See [TodoMVC](http://todomvc.com) for ideas.
-  **NOTE: ** If you decide to use one of these, you *must* be able to defend your decision, by answering an instructor's questions on Monday about why you think you can a) handle it b) use it effectively, in terms of why you need the framework.
+**NOTE: ** If you decide to use one of these, you *must* be able to defend your decision, by answering an instructor's questions on Monday about why you think you can a) handle it b) use it effectively, in terms of why you need the framework.
 * **Authentication and Authorization.** Your app will maintain user
   accounts and profiles. Login credentials must be validated before
   users can gain access to your application.
