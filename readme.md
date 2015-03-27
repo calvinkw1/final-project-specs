@@ -14,10 +14,8 @@ The objective of this project is:
 and community members.
 
 ## CORE REQUIREMENTS
-* **Test It.** You must write request and feature specs.
-* **Authentication and Authorization.** Your app will maintain user
-  accounts and profiles. Login credentials must be validated before
-  users can gain access to your application.
+* **Documentation.** README.md contains purpose and description of app
+and code is commented.
 * **Handles invalid data.** Forms in your application should validate
   data and handle incorrect inputs. Validate sign up information,
   verify valid email addresses and secure passwords.
@@ -28,21 +26,24 @@ views.
   to improve your js codebase cleanliness, DRYness, and
   maintanability. If you want to write a JSON API with Rails, and
   build your frontend as a pure JS app, then go for it.
-* **CSS & Styling**
 * **AJAX.** Use AJAX to communicate with the server without reloading
   the page. Some things to consider might be validating or saving form
   input.
-* **Rails or Node.** You can build your app in Rails or Node.
-* **External APIs.** Use external APIs to add functionality to your
-app.
+* **Rails or Node.** You can build your app in Rails or Node (in some cases both)
+* **CSS & Styling**
 * **Heroku.** Deploy your code to Heroku.
-* **Documentation.** README.md contains purpose and description of app
-and code is commented.
 
 ## OPTIONAL ADD-ONS
 
 * **Socket.IO** Incorporate Socket.IO when building your app.
 * **Underscore.js** Impress us with your newfound Underscore.js knowledge.
+* Frontend framework to organize your js code. See [TodoMVC](http://todomvc.com) for ideas.
+  **NOTE: ** If you decide to use one of these, you *must* be able to defend your decision, by answering an instructor's questions on Monday about why you think you can a) handle it b) use it effectively, in terms of why you need the framework.
+* **Authentication and Authorization.** Your app will maintain user
+  accounts and profiles. Login credentials must be validated before
+  users can gain access to your application.
+* **External APIs.** Use external APIs to add functionality to your
+app, if it makes sense to do so.
 * **Responsive Design** Use responsive design techniques to make your
   site beautiful on various screen sizes. Consider using Twitter
   Bootstrap or another css framework to help with this.
