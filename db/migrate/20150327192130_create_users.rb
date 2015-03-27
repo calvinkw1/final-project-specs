@@ -6,8 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password
       t.string :password_digest
-      t.string :phone_num
-      t.string :integer
+      t.integer :phone_num
 
       t.timestamps null: false
     end

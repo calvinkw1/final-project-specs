@@ -7,7 +7,7 @@ class CreateAlerts < ActiveRecord::Migration
       t.date :date_inbound
       t.string :origin
       t.string :destination
-      t.boolean :round_trip
+      t.boolean :round_trip, default: true
       t.integer :adults
       t.integer :children
       t.string :cabin_type
