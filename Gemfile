@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'typhoeus'
-gem 'mandrill'
+gem 'mandrill-api', require: 'mandrill'
 gem 'sidekiq'
 gem 'jquery-ui-rails', '~> 5.0.3'
 # Use Unicorn as the app server
