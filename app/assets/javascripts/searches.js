@@ -12,7 +12,7 @@ $(document).ready(function() {
         adultCount = $("#adultCount").val(),
         preferredCabin = $("#preferredCabin").val(),
         permittedCarrier = $("#permittedCarrier").val(),
-        reqBody = JSON.stringify({
+        reqBody = {
           "request": {
             "passengers": {
               "kind": "qpxexpress#passengerCounts",
@@ -51,12 +51,14 @@ $(document).ready(function() {
             "refundable": false,
             "solutions": 1
           }
-        });
+        };
+console.log(typeof reqBody);
     $.ajax({
-      url: '/search.json',
+      url: '/search',
+      dataType: 'json',
       method: 'POST',
       // contentType: "application/json; charset=utf-8",
-      data: reqBody,
+      data: {qpxData: JSON.stringify(reqBody)},
       success: function(data) {
         console.log(data);
       }
