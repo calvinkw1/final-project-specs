@@ -13,7 +13,6 @@ class SearchesController < ApplicationController
     # permittedCarrier = params[:permittedCarrier]
     # preferredCabin = params[:preferredCabin]
     reqBody = params[:qpxData]
-    # binding.pry
     flightRequest = Typhoeus::Request.new(
       "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyDE6F79FbnrSc9hZlurECTyBJoEyHCj-Nc",
       method: :post,

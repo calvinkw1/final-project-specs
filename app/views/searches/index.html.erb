@@ -5,19 +5,33 @@
   <%= text_field_tag(:origin) %>
   <%= label_tag(:destination, "Destination Airport: ") %>
   <%= text_field_tag(:destination) %>
-  <%= label_tag(:date, "Date: ") %>
-  <%= text_field_tag(:date) %>
+  <%= label_tag(:departDate, "Departure Date: ") %>
+  <%= text_field_tag(:departDate) %>
+  <%= label_tag(:returnDate, "Return Date: ") %>
+  <%= text_field_tag(:returnDate) %>
   <%= label_tag(:adultCount, "Adults: ") %>
   <%= text_field_tag(:adultCount) %>
+  <%= label_tag(:childCount, "Children: ") %>
+  <%= text_field_tag(:childCount, value = 0) %>
   <%= label_tag(:preferredCabin, "Cabin Class: ") %>
   <%= text_field_tag(:preferredCabin) %>
   <%= label_tag(:permittedCarrier, "Preferred Airlines: ") %>
   <%= text_field_tag(:permittedCarrier) %>
+  <%= label_tag(:prohibitedCarrier, "Prohibited Airlines: ") %>
+  <%= text_field_tag(:prohibitedCarrier, value = "") %>
+  <%= label_tag(:maxStops, "Number of Stops: ") %>
+  <%= text_field_tag(:maxStops, value = 0) %>
+  <%= label_tag(:solutions, "Number of results:") %>
+  <%= text_field_tag(:solutions) %>
   <%= submit_tag("Search") %>
 <% end %>
 
 
 
 <div class="results">
-  
+  <table class="table table-striped">
+    <tbody>
+      
+    </tbody>
+  </table>
 </div>
