@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def main
   end
 
@@ -24,4 +25,5 @@ class UsersController < ApplicationController
 
   def edit
   end
+
 end

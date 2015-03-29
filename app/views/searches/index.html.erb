@@ -1,2 +1,23 @@
-<h1>Searches#index</h1>
-<p>Find me in app/views/searches/index.html.erb</p>
+<h1>Displaying all search results</h1>
+
+<%= form_tag new_search_path, method: "post", id:"search-input" do %>
+  <%= label_tag(:origin, "Departure Airport: ") %>
+  <%= text_field_tag(:origin) %>
+  <%= label_tag(:destination, "Destination Airport: ") %>
+  <%= text_field_tag(:destination) %>
+  <%= label_tag(:date, "Date: ") %>
+  <%= text_field_tag(:date) %>
+  <%= label_tag(:adultCount, "Adults: ") %>
+  <%= text_field_tag(:adultCount) %>
+  <%= label_tag(:preferredCabin, "Cabin Class: ") %>
+  <%= text_field_tag(:preferredCabin) %>
+  <%= label_tag(:permittedCarrier, "Preferred Airlines: ") %>
+  <%= text_field_tag(:permittedCarrier) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+
+
+<div class="results">
+  
+</div>
