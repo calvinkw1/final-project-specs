@@ -1,3 +1,3 @@
 class InboxController < ApplicationController
-  include Mandrill::Rails::WebHookProcessor
+  # include Mandrill::Rails::WebHookProcessor
 end

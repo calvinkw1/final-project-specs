@@ -11,14 +11,14 @@ User.create(
   last_name: "Marazzo",
   email: "designmarz@gmail.com",
   password: "password",
-  phone_num: "4088075583"
+  # phone_num: "4088075583"
   )
 User.create(
   first_name: "Calvin",
   last_name: "Wang",
   email: "calvinkw1@gmail.com",
   password: "password",
-  phone_num: "6503888988"
+  # phone_num: "6503888988"
   )
 
  # 2   Sale Price: USD211.10
@@ -83,19 +83,19 @@ User.create(
 # VX 942 SFO 2015-03-31T18:45-07:00 LAX 2015-03-31T20:05-07:00
 
 
-Alert.create(
-  uid: "1",
-  max_price: "1000",
-  date_outbound: "2015-03-31",
-  date_inbound: "2015-03-31",
-  origin: "SFO",
-  destination: "LAX",
-  round_tri: true,
-  adults: "1",
-  children: "0",
-  cabin_type: "COACH",
-  airline: "VX",
-  stops: "0",
-  outbound_time: "18:45-07:00",
-  inbound_time: "20:05-07:00"
-  )
+# Alert.create(
+#   uid: "1",
+#   max_price: "1000",
+#   date_outbound: "2015-03-31",
+#   date_inbound: "2015-03-31",
+#   origin: "SFO",
+#   destination: "LAX",
+#   round_tri: true,
+#   adults: "1",
+#   children: "0",
+#   cabin_type: "COACH",
+#   airline: "VX",
+#   stops: "0",
+#   outbound_time: "18:45-07:00",
+#   inbound_time: "20:05-07:00"
+#   )
