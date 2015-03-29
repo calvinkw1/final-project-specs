@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'searches/index'
+
+  get '/', to: "users#main", as: "root"
 
   get 'users/main'
 
@@ -8,6 +9,10 @@ Rails.application.routes.draw do
   get 'users/show'
 
   get 'users/edit'
+
+  get 'searches/index'
+
+  post '/search', to: 'searches#new', as: 'new_search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
