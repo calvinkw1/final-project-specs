@@ -2,7 +2,7 @@ class SearchesController < ApplicationController
   require 'json'
 
   def index
-    
+ 
   end
 
   def new
@@ -32,3 +32,4 @@ class SearchesController < ApplicationController
   end
 
 end
+
