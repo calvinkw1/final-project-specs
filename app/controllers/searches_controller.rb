@@ -2,7 +2,11 @@ class SearchesController < ApplicationController
   require 'json'
 
   def index
- 
+   @user = User.all
+    Flightsearch_worker.perform_in(1.minutes, 2)
+    binding.pry
+    # User_Mailer.alert_email.deliver
+    UserMailer.email_name.deliver
   end
 
   def new
