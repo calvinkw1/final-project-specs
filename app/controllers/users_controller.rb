@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  # before_action :confirm_logged_in, only: [:home]
-  # before_action :prevent_login_signup, only: [:signup, :login]
+  before_action :confirm_logged_in, only: [:home]
+  before_action :prevent_login_signup, only: [:signup, :login]
   def main
   end
 
@@ -9,23 +9,35 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
- 
-    respond_to do |format|
-      if @user.save
-        # Tell the UserMailer to send a welcome email after save
-        UserMailer.welcome_email(@user).deliver_later
- 
-        format.html { redirect_to(@user, notice: 'User was successfully created.') }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+    @user = User.create(user_params)
+    if @user.save
+      UserMailer.welcome_email(@user).deliver_later
+      session[:user_id] = @user.email
+      flash[:success] = "User was successfully created."
+      redirect_to home_path
+    else
       render :signup
-      end
-
     end
   end
+
+  # def create
+  #   @user = User.new(params[:user])
+ 
+  #   respond_to do |format|
+  #     if @user.save
+  #       # Tell the UserMailer to send a welcome email after save
+  #       UserMailer.welcome_email(@user).deliver_later
+ 
+  #       format.html { redirect_to(@user, notice: 'User was successfully created.') }
+  #       format.json { render json: @user, status: :created, location: @user }
+  #     else
+  #       format.html { render action: 'signup' }
+  #       format.json { render json: @user.errors, status: :unprocessable_entity }
+  #     # render :signup
+  #     end
+  #   end
+  # end
+
   def attempt_login
 
     if params[:email].present? && params[:password].present?
@@ -44,7 +56,7 @@ class UsersController < ApplicationController
       render :login
 
     else
-      session[:user_id] = authorized_user.id
+      session[:user_id] = authorized_user.email
       redirect_to root_path, flash: {success: "You are now logged in."}
     end
   end
@@ -61,7 +73,8 @@ class UsersController < ApplicationController
 
   private 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :password, :password_digest)
+      binding.pry
+      params.permit(:email, :first_name, :last_name, :password, :password_digest)
     end
 
     def confirm_logged_in

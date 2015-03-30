@@ -16,8 +16,9 @@ Rails.application.routes.draw do
 
   post '/search', to: 'searches#new', as: 'new_search'
 
-  post 'users', to: "users#create"
+  post 'users/new', to: "users#create"
 
+  get 'logout', to: "users#logout"
   post 'login', to: "users#attempt_login"
 
   # The priority is based upon order of creation: first created -> highest priority.
