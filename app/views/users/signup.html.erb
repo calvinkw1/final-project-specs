@@ -1,0 +1,19 @@
+<h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p>
+<h1>Signup</h1>
+<%= form_tag signup_path, method: "post", id:"user-input" do %>
+  <%= label_tag(:first_name, "First Name", autofocus: true) %>
+  <%= text_field_tag(:first_name) %>
+
+  <%= label_tag(:last_name, "Last Name") %>  
+  <%= text_field_tag(:last_name) %> 
+  
+  <%= label_tag(:email, "email") %>
+  <%= text_field_tag(:email) %>
+  
+  <%= label_tag(:password, "Password") %>
+  <%= text_field_tag(:password) %>
+
+  <%= submit_tag("Sign Up") %>
+<% end %>
+

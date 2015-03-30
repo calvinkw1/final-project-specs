@@ -1,8 +1,12 @@
 class SearchesController < ApplicationController
+  before_action :confirm_logged_in
+  # before_action :prevent_login_signup, only: [:signup, :login]
   require 'json'
 
   def index
- 
+   @user = User.all
+    Flightsearch_worker.perform_in(1.minutes, 2)
+    # UserMailer.email_name.deliver
   end
 
   def new
@@ -37,5 +41,12 @@ class SearchesController < ApplicationController
     redirect_to users_main_path
   end
 
+private 
+    def confirm_logged_in
+      unless session[:user_id]
+        redirect_to login_path, alert: "Please log in"
+      end
+    end
+    
 end
 

@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   get 'users/main'
 
-  get 'users/new'
+  get 'login', to: "users#login", as: 'login'
+
+  get 'users/new', to: "users#signup", as: 'signup'
 
   get 'users/show'
 
@@ -15,6 +17,15 @@ Rails.application.routes.draw do
   post '/search', to: 'searches#new', as: 'new_search'
 
   post '/save', to: 'searches#save', as: 'save_search'
+
+  post 'users/new', to: "users#create"
+
+  get 'logout', to: "users#logout"
+
+  post 'login', to: "users#attempt_login"
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
