@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   get 'users/main'
 
-  get 'users/new'
+  get 'login', to: "users#login", as: 'login'
+
+  get 'users/new', to: "users#signup", as: 'signup'
 
   get 'users/show'
 
@@ -13,6 +15,10 @@ Rails.application.routes.draw do
   get 'searches/index'
 
   post '/search', to: 'searches#new', as: 'new_search'
+
+  post 'users', to: "users#create"
+
+  post 'login', to: "users#attempt_login"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
