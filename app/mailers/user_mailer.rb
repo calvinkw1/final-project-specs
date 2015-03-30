@@ -4,7 +4,6 @@ class UserMailer < ApplicationMailer
   @m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
 
   def welcome_email(user)
-    binding.pry
     require 'mandrill'
     m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
     message = {  
@@ -32,7 +31,6 @@ class UserMailer < ApplicationMailer
     require 'mandrill'
     m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
     user = User.all[0]
-    binding.pry
     message = {  
        :subject=> "Your Flight Alerts!",  
        :from_name=> "#{user.email}",  

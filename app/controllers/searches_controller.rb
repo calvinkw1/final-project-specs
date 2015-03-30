@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+  before_action :confirm_logged_in
+  # before_action :prevent_login_signup, only: [:signup, :login]
   require 'json'
 
   def index
@@ -32,6 +34,11 @@ class SearchesController < ApplicationController
       }
     end
   end
-
+private 
+    def confirm_logged_in
+      unless session[:user_id]
+        redirect_to login_path, alert: "Please log in"
+      end
+    end
 end
 
