@@ -17,7 +17,8 @@ class UserMailer < ApplicationMailer
          }  
        ],  
        :html=>"<html><h1>Thanks for signing up!</h1></html>",  
-       :from_email=>user.email
+       :from_name=>"Team @ getmeflights",
+       :from_email=>"<getmeflights@gmail.com>"
       }  
       sending = m.messages.send message  
       puts sending
@@ -42,7 +43,8 @@ class UserMailer < ApplicationMailer
          }  
        ],  
        :html=>"<html><h1>Hi <strong>message</strong>, how are you?</h1></html>",  
-       :from_email=>user.email
+       :from_name=>"Team @ getmeflights",
+       :from_email=>"<getmeflights@gmail.com>"
       }  
       sending = m.messages.send message  
       puts sending

@@ -1,0 +1,20 @@
+
+<div class="loginOut">
+<% if session[:user_id] %>
+  
+  <br>
+  <div class="signin">
+  <%= link_to "Logout", logout_path, class:"btn btn-danger" %>
+  </div>
+<% else %> <div class="signin">
+
+
+
+
+  <%= link_to "Login", login_path, class:"btn btn-danger" %>
+  </div>
+  <br>
+<% end %>
+</div>
+
+

@@ -24,6 +24,9 @@ class UsersController < ApplicationController
 
     if params[:email].present? && params[:password].present?
       found_user = User.find_by_email params[:email]
+      binding.pry
+      session[:user_id] = found_user.id
+      binding.pry
       if found_user
         authorized_user = found_user.confirm params[:password]
       end
@@ -48,6 +51,7 @@ class UsersController < ApplicationController
   end
 
   def logout
+    binding.pry
     session[:user_id] = nil
     flash[:notice] = "Logged out"
     redirect_to login_path
@@ -55,7 +59,6 @@ class UsersController < ApplicationController
 
   private 
     def user_params
-      binding.pry
       params.permit(:email, :first_name, :last_name, :password, :password_digest)
     end
 
