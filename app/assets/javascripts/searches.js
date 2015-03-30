@@ -79,7 +79,17 @@ $(document).ready(function() {
         results = data.results.trips.tripOption;
           $("tbody").empty();
         for (var i = 0; i < results.length; i++) {
-          $("tbody").append("<tr><td>" + results[i].pricing[0].baseFareTotal + "</td></tr>");
+          $("tbody").append("<tr id='result-row" + i + "'>");
+          $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].origin + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].destination + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].departureTime + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].arrivalTime + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].pricing[0].passengers.adultCount + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].aircraft + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].pricing[0].baseFareTotal + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].pricing[0].saleTaxTotal + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].pricing[0].saleTotal + "</td>");
+
         }
       }
     });
