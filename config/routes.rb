@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get 'logout', to: "users#logout"
   post 'login', to: "users#attempt_login"
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

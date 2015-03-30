@@ -24,6 +24,24 @@ class UserMailer < ApplicationMailer
   end
 
   def alert_email
+    require 'mandrill'
+    m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
+    # user = User.all[0]
+    message = {  
+       :subject=> "Hourly Alerts!",  
+       :from_name=> "Team @ getmeflights",  
+       :text=>"Team @ getmeflights => ALERTS",
+       :to=>[  {
+           :email=> "designmarz@gmail.com",  
+           :name=> "Nick"  
+         }  
+       ],  
+       :html=>"<html><h1>Hourly Alert Test</h1></html>",  
+       :from_name=>"Team @ getmeflights",
+       :from_email=>"<getmeflights@gmail.com>"
+      }  
+      sending = m.messages.send message  
+      puts sending
     
   end
 
