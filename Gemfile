@@ -32,7 +32,9 @@ gem 'jquery-ui-rails', '~> 5.0.3'
 gem 'json', '~> 1.8.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
+gem 'sidekiq-scheduler', '~> 1'
 gem 'whenever', :require => false
+gem 'sinatra', :require => nil
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
