@@ -30,5 +30,12 @@ class SearchesController < ApplicationController
     end
   end
 
+  def save
+    savedSearch = params[:savedSearch]
+    @saved = Alert.create(searchParams:savedSearch)
+    binding.pry
+    redirect_to users_main_path
+  end
+
 end
 

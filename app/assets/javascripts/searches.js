@@ -6,10 +6,12 @@ $(document).ready(function() {
       returnDate,
       adultCount = 1,
       childCount = 0,
+      maxPrice = 0,
       maxStops = 0,
       preferredCabin = "COACH",
       permittedCarrier = [""],
-      prohibitedCarrier = [""];
+      prohibitedCarrier = [""],
+      searchObjSave;
 
 
   $("#search-input").submit(function(e) {
@@ -20,6 +22,7 @@ $(document).ready(function() {
     returnDate = $("#returnDate").val();
     adultCount = parseInt($("#adultCount").val(), 10);
     childCount = parseInt($("#childCount").val(), 10);
+    maxPrice = "USD" + $("#maxPrice").val() + ".00";
     maxStops = parseInt($("#maxStops").val(), 10);
     preferredCabin = $("#preferredCabin").val().toUpperCase();
     permittedCarrier = $("#permittedCarrier").val().toUpperCase().split(",");
@@ -75,12 +78,13 @@ $(document).ready(function() {
             "prohibitedCarrier": prohibitedCarrier
           }
         ],
-        "maxPrice": "USD3000.00",
+        "maxPrice": maxPrice,
         // "saleCountry": "US",
         "refundable": false,
         "solutions": 500
       }
-  };
+    };
+    searchObjSave = reqBody;
     $.ajax({
       url: '/search',
       dataType: 'json',
@@ -89,6 +93,7 @@ $(document).ready(function() {
       data: {qpxData: JSON.stringify(reqBody)},
       success: function(data) {
         $(".results").show();
+        $("#save-search").show();
         console.log(data);
         results = data.results.trips.tripOption;
         flightData = data.results.trips.data;
@@ -121,5 +126,16 @@ $(document).ready(function() {
       }
     });
   }
+
+    $("#save").click(function(e) {
+      e.preventDefault();
+      console.log(searchObjSave);
+      $.ajax({
+        url: '/save',
+        method: 'POST',
+        data: {savedSearch: JSON.stringify(searchObjSave)}
+      });
+    });
+
 
 });

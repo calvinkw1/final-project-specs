@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new(params[:user])
- 
     respond_to do |format|
       if @user.save
         # Tell the UserMailer to send a welcome email after save

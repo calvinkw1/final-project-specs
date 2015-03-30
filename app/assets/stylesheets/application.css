@@ -18,3 +18,8 @@
 .results {
   display: none;
 }
+
+#save-search {
+  display: none;
+  text-align: right;
+}

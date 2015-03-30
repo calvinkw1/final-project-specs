@@ -18,21 +18,9 @@ ActiveRecord::Schema.define(version: 20150327231314) do
 
   create_table "alerts", force: :cascade do |t|
     t.integer  "uid"
-    t.integer  "max_price"
-    t.date     "date_outbound"
-    t.date     "date_inbound"
-    t.string   "origin"
-    t.string   "destination"
-    t.boolean  "round_trip",    default: true
-    t.integer  "adults"
-    t.integer  "children"
-    t.string   "cabin_type"
-    t.string   "airline"
-    t.integer  "stops"
-    t.time     "outbound_time"
-    t.time     "inbound_time"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "searchParams"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   post '/search', to: 'searches#new', as: 'new_search'
 
+  post '/save', to: 'searches#save', as: 'save_search'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
