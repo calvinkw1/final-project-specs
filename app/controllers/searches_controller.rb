@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  before_action :confirm_logged_in
+  # before_action :confirm_logged_in
   # before_action :prevent_login_signup, only: [:signup, :login]
   require 'json'
 
@@ -10,12 +10,6 @@ class SearchesController < ApplicationController
   end
 
   def new
-    # origin = params[:origin]
-    # destination = params[:destination]
-    # date = params[:date]
-    # adultCount = params[:adultCount]
-    # permittedCarrier = params[:permittedCarrier]
-    # preferredCabin = params[:preferredCabin]
     reqBody = params[:qpxData]
     flightRequest = Typhoeus::Request.new(
       "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyDE6F79FbnrSc9hZlurECTyBJoEyHCj-Nc",

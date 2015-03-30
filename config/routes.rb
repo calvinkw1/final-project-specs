@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   post '/save', to: 'searches#save', as: 'save_search'
 
-  post 'users/new', to: "users#create"
+  post 'users/new', to: "users#create", as: 'create_user'
 
   get 'logout', to: "users#logout"
 

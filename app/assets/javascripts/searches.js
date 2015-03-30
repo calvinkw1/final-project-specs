@@ -94,10 +94,10 @@ $(document).ready(function() {
       success: function(data) {
         $(".results").show();
         $("#save-search").show();
+        $("tbody").empty();
         console.log(data);
         results = data.results.trips.tripOption;
-        flightData = data.results.trips.data;
-          $("tbody").empty();
+        flightData = data.results.trips.data;        
         for (var i = 0; i < results.length; i++) {
           $("tbody").append("<tr id='result-row" + i + "'>");
           // Outbound flights
