@@ -11,12 +11,13 @@ $(document).ready(function() {
       permittedCarrier = [""],
       prohibitedCarrier = [""];
 
+
   $("#search-input").submit(function(e) {
     e.preventDefault();
     origin = $("#origin").val().toUpperCase();
     destination = $("#destination").val().toUpperCase();
     departDate = $("#departDate").val();
-    returnDate = $("returnDate").val();
+    returnDate = $("#returnDate").val();
     adultCount = parseInt($("#adultCount").val(), 10);
     childCount = parseInt($("#childCount").val(), 10);
     maxStops = parseInt($("#maxStops").val(), 10);
@@ -26,8 +27,9 @@ $(document).ready(function() {
     startAPICall();
   });
 
+
   function startAPICall() {
-    reqBody = {
+    var reqBody = {
       "request": {
         "passengers": {
           "kind": "qpxexpress#passengerCounts",
@@ -54,6 +56,23 @@ $(document).ready(function() {
             "permittedCarrier": permittedCarrier,
             "alliance": "",
             "prohibitedCarrier": prohibitedCarrier
+          },
+          {
+            "kind": "qpxexpress#sliceInput",
+            "origin": destination,
+            "destination": origin,
+            "date": returnDate,
+            "maxStops": maxStops,
+            "maxConnectionDuration": 0,
+            "preferredCabin": preferredCabin,
+            "permittedDepartureTime": {
+              "kind": "qpxexpress#timeOfDayRange",
+              "earliestTime": "",
+              "latestTime": ""
+            },
+            "permittedCarrier": permittedCarrier,
+            "alliance": "",
+            "prohibitedCarrier": prohibitedCarrier
           }
         ],
         "maxPrice": "USD3000.00",
@@ -61,7 +80,7 @@ $(document).ready(function() {
         "refundable": false,
         "solutions": 500
       }
-    };
+  };
     $.ajax({
       url: '/search',
       dataType: 'json',
@@ -76,6 +95,7 @@ $(document).ready(function() {
           $("tbody").empty();
         for (var i = 0; i < results.length; i++) {
           $("tbody").append("<tr id='result-row" + i + "'>");
+          // Outbound flights
           $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].origin + "</td>");
           $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].destination + "</td>");
           $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].departureTime + "</td>");
@@ -84,10 +104,19 @@ $(document).ready(function() {
           $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].cabin + "</td>");
           $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].flight.carrier + " " + results[i].slice[0].segment[0].flight.number + "</td>");
           $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].aircraft + "</td>");
+          // Inbound flights
+          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].origin + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].destination + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].departureTime + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].arrivalTime + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].pricing[0].passengers.adultCount + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].cabin + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].flight.carrier + " " + results[i].slice[0].segment[0].flight.number + "</td>");
+          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].aircraft + "</td>");
+          // Fare calculation includes both Outbound and Inbound totals
           $("#result-row" + i).append("<td>" + results[i].pricing[0].baseFareTotal + "</td>");
           $("#result-row" + i).append("<td>" + results[i].pricing[0].saleTaxTotal + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].pricing[0].saleTotal + "</td>");
-
+          $("#result-row" + i).append("<td>" + results[i].saleTotal + "</td>");
         }
       }
     });
