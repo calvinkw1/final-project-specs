@@ -14,29 +14,11 @@ class UsersController < ApplicationController
       UserMailer.welcome_email(@user).deliver_later
       session[:user_id] = @user.email
       flash[:success] = "User was successfully created."
-      redirect_to home_path
+      redirect_to root_path
     else
       render :signup
     end
   end
-
-  # def create
-  #   @user = User.new(params[:user])
- 
-  #   respond_to do |format|
-  #     if @user.save
-  #       # Tell the UserMailer to send a welcome email after save
-  #       UserMailer.welcome_email(@user).deliver_later
- 
-  #       format.html { redirect_to(@user, notice: 'User was successfully created.') }
-  #       format.json { render json: @user, status: :created, location: @user }
-  #     else
-  #       format.html { render action: 'signup' }
-  #       format.json { render json: @user.errors, status: :unprocessable_entity }
-  #     # render :signup
-  #     end
-  #   end
-  # end
 
   def attempt_login
 
@@ -85,7 +67,7 @@ class UsersController < ApplicationController
 
     def prevent_login_signup
         if session[:user_id]
-          redirect_to home_path
+          redirect_to root_path
         end
     end
 

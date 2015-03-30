@@ -1,21 +1,30 @@
-require 'mandrill'
-
 class UserMailer < ApplicationMailer
- default from: 'flightTest@gmail.com'
- @m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
+  require 'mandrill'
+  default from: 'flightTest@gmail.com'
+  @m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
 
   def welcome_email(user)
-    @user = user
-    @url = 'http://localhost:3000'
-    mail(@user.email, subject: "Welcome Email")
+    binding.pry
+    require 'mandrill'
+    m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
+    message = {  
+       :subject=> "Thanks for signing up!",  
+       :from_name=> "#{user.email}",  
+       :text=>"ALERTS",
+       :to=>[  {
+           :email=> user.email,
+           :name=> user.first_name  
+         }  
+       ],  
+       :html=>"<html><h1>Thanks for signing up!</h1></html>",  
+       :from_email=>user.email
+      }  
+      sending = m.messages.send message  
+      puts sending
   end
 
   def alert_email
-    user = User.all[0]
-    binding.pry
-    @url = 'http://localhost:3000'
-    binding.pry
-    mail(to: user.email, subject: "Your Flight Alerts")
+    
   end
 
   def email_name
