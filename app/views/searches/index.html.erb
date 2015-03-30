@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <h1>Displaying all search results</h1>
 
 <%= form_tag new_search_path, method: "post", id:"search-input" do %>
@@ -18,11 +19,10 @@
   <%= label_tag(:permittedCarrier, "Preferred Airlines: ") %>
   <%= text_field_tag(:permittedCarrier) %>
   <%= label_tag(:prohibitedCarrier, "Prohibited Airlines: ") %>
-  <%= text_field_tag(:prohibitedCarrier, value = "") %>
+  <%= text_field_tag(:prohibitedCarrier) %>
   <%= label_tag(:maxStops, "Number of Stops: ") %>
   <%= text_field_tag(:maxStops, value = 0) %>
-  <%= label_tag(:solutions, "Number of results:") %>
-  <%= text_field_tag(:solutions) %>
+
   <%= submit_tag("Search") %>
 <% end %>
 
@@ -31,10 +31,12 @@
 <div class="results">
   <table class="table table-striped">
     <thead>
-      <tr><td>Origin</td><td>Destination</td><td>Departure Time</td><td>Arrival Time</td><td>Passengers</td><td>Aircraft</td><td>Base Fare</td><td>Sale Tax</td><td>Total Fare</td></tr>
+      <tr><td>Origin</td><td>Destination</td><td>Departure Time</td><td>Arrival Time</td><td>Passengers</td><td>Cabin Type</td><td>Flight Number</td><td>Aircraft Code</td><td>Base Fare</td><td>Sale Tax</td><td>Total Fare</td></tr>
     </thead>
     <tbody>
       
     </tbody>
   </table>
+</div>
+
 </div>
