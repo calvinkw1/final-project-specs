@@ -12,8 +12,3 @@ class Flightsearch_worker
     end
   end
 end
-
-# # Kick off a bunch of jobs early in the morning
-# every 1.day, :at => '1:00 pm' do
-#   runner "MyWorker.late_night_work"
-#   end
