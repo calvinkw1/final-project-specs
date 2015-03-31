@@ -15,7 +15,7 @@ $(document).ready(function() {
       searchObjSave;
 
 
-  $("#search-input").submit(function(e) {
+  $(".search-input").submit(function(e) {
     e.preventDefault();
     uid = $("#uid").val();
     origin = $("#origin").val().toUpperCase();

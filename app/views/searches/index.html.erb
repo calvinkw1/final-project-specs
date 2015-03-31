@@ -1,7 +1,8 @@
 <h1>Displaying all search results</h1>
 
+<h3>Search flights</h3>
 <div>
-  <%= form_tag new_search_path, method: "post", id:"search-input" do %>
+  <%= form_tag new_search_path, method: "post", class:"search-input" do %>
     <%= hidden_field_tag(:uid, session[:user_id]) %>
   <div class="form-group">
     <%= text_field_tag(:origin, nil, placeholder:"Departure Airport") %>
