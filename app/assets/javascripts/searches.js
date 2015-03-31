@@ -153,8 +153,8 @@ $(document).ready(function() {
         permittedCarrier: permittedCarrier,
         prohibitedCarrier: prohibitedCarrier
       },
-      success: function() {
-        window.location.href = "/";
+      success: function(data) {
+        console.log(data);
       }
     });
   });

@@ -7,12 +7,13 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <td>Origin</td><td>Destination</td><td>Departure Date</td><td>Return Date</td><td>Passengers: Adult</td><td>Passengers: Children</td><td>Max Price</td><td>Cabin Class</td><td>Preferred Airlines</td><td>Prohibited Airlines</td>
+          <td></td><td>Origin</td><td>Destination</td><td>Departure Date</td><td>Return Date</td><td>Passengers: Adult</td><td>Passengers: Children</td><td>Max Price</td><td>Cabin Class</td><td>Preferred Airlines</td><td>Prohibited Airlines</td>
         </tr>
       </thead>
       <tbody>
         <% @alerts.each do |alert| %>
           <tr>
+          <td><%= button_to "Delete Alert", delete_alert_path(alert), method: :delete, data: { confirm: "Are you sure you want to remove this alert?"} %></td>
             <td><%= alert.origin %></td>
             <td><%= alert.destination %></td>
             <td><%= alert.departDate %></td>
