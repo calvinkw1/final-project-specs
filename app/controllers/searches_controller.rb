@@ -31,8 +31,6 @@ class SearchesController < ApplicationController
   end
 
   def save
-    puts "THIS IS THE SESSION AGAIN"
-    puts session
     savedSearch = params[:savedSearch]
     @saved = Alert.create(
       uid:params[:uid],
@@ -48,7 +46,6 @@ class SearchesController < ApplicationController
       permittedCarrier:params[:permittedCarrier],
       prohibitedCarrier:params[:prohibitedCarrier]
     )
-    binding.pry
     redirect_to root_path
   end
 

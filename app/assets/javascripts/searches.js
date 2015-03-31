@@ -96,12 +96,12 @@ $(document).ready(function() {
       success: function(data) {
         $(".results").show();
         $("#save-search").show();
-        $("tbody").empty();
+        $("#results").empty();
         console.log(data);
         results = data.results.trips.tripOption;
         flightData = data.results.trips.data;        
         for (var i = 0; i < results.length; i++) {
-          $("tbody").append("<tr id='result-row" + i + "'>");
+          $("#results").append("<tr id='result-row" + i + "'>");
           // Outbound flights
           $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].origin + "</td>");
           $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].destination + "</td>");
@@ -129,30 +129,35 @@ $(document).ready(function() {
     });
   }
 
-    $("#save").click(function(e) {
-      console.log(searchObjSave);
-      $.ajax({
-        url: '/save',
-        method: 'POST',
-        data: {
-          uid: uid,
-          savedSearch: JSON.stringify(searchObjSave),
-          origin: origin,
-          destination: destination,
-          departDate: departDate,
-          returnDate: returnDate,
-          adultCount: adultCount,
-          childCount: childCount,
-          maxPrice: maxPrice,
-          preferredCabin: preferredCabin,
-          permittedCarrier: permittedCarrier,
-          prohibitedCarrier: prohibitedCarrier
-        },
-        success: function() {
-          window.location.href = "/";
-        }
-      });
+  $(function() {
+    $(".alerts").accordion({collapsible:true, active: false});
+  });
+
+  $("#save").click(function(e) {
+    e.preventDefault();
+    console.log(searchObjSave);
+    $.ajax({
+      url: '/save',
+      method: 'POST',
+      data: {
+        uid: uid,
+        savedSearch: JSON.stringify(searchObjSave),
+        origin: origin,
+        destination: destination,
+        departDate: departDate,
+        returnDate: returnDate,
+        adultCount: adultCount,
+        childCount: childCount,
+        maxPrice: maxPrice,
+        preferredCabin: preferredCabin,
+        permittedCarrier: permittedCarrier,
+        prohibitedCarrier: prohibitedCarrier
+      },
+      success: function() {
+        window.location.href = "/";
+      }
     });
+  });
 
 
 });

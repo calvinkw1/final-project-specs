@@ -1,46 +1,47 @@
 <h1>User Home</h1>
 
-<p>Welcome <%= @user.first_name %></p>
+<p>Welcome back, <%= @user.first_name %></p>
 
 <div class="alerts">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <td>Origin</td><td>Destination</td><td>Departure Date</td><td>Return Date</td><td>Passengers: Adult</td><td>Passengers: Children</td><td>Max Price</td><td>Cabin Class</td><td>Preferred Airlines</td><td>Prohibited Airlines</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @alerts.each do |alert| %>
+  <h3>Saved Alerts</h3>
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td><%= alert.origin %></td>
-          <td><%= alert.destination %></td>
-          <td><%= alert.departDate %></td>
-          <td><%= alert.returnDate %></td>
-          <td><%= alert.adultCount %></td>
-          <td><%= alert.childCount %></td>
-          <td><%= alert.maxPrice %></td>
-          <td><%= alert.preferredCabin %></td>
-          <td><%= alert.permittedCarrier %></td>
-          <td><%= alert.prohibitedCarrier %></td>        
+          <td>Origin</td><td>Destination</td><td>Departure Date</td><td>Return Date</td><td>Passengers: Adult</td><td>Passengers: Children</td><td>Max Price</td><td>Cabin Class</td><td>Preferred Airlines</td><td>Prohibited Airlines</td>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @alerts.each do |alert| %>
+          <tr>
+            <td><%= alert.origin %></td>
+            <td><%= alert.destination %></td>
+            <td><%= alert.departDate %></td>
+            <td><%= alert.returnDate %></td>
+            <td><%= alert.adultCount %></td>
+            <td><%= alert.childCount %></td>
+            <td><%= alert.maxPrice %></td>
+            <td><%= alert.preferredCabin %></td>
+            <td><%= alert.permittedCarrier %></td>
+            <td><%= alert.prohibitedCarrier %></td>        
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
 
 
 
-
+<h3>Search flights</h3>
 <div>
   <%= form_tag new_search_path, method: "post", id:"search-input" do %>
-
+    <%= hidden_field_tag(:uid, session[:user_id]) %>
   <div class="form-group">
     <%= text_field_tag(:origin, nil, placeholder:"Departure Airport") %>
     <%= text_field_tag(:destination, nil, placeholder:"Destination Airport") %>
   </div>
   <div class="form-group">
-    <%= date_field_tag(:departDate, nil, placeholder:"Departure Date") %>
-    <%= date_field_tag(:returnDate, nil, placeholder:"Return Date") %>
+    <%= date_field_tag(:departDate, Date.tomorrow) %>
+    <%= date_field_tag(:returnDate, Date.tomorrow+3) %>
   </div>
   <div class="form-group">
     <%= text_field_tag(:adultCount, nil, placeholder:"Adults") %>
@@ -55,4 +56,23 @@
   </div>
     <%= submit_tag("Search") %>
   <% end %>
+</div>
+
+<div id="save-search">
+  <button type="button" class="btn btn-primary" id="save">Save this Search!</button>
+</div>
+<br>
+
+
+<div class="results">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>Origin</td><td>Destination</td><td>Departure Time</td><td>Arrival Time</td><td>Passengers</td><td>Cabin Type</td><td>Flight Number</td><td>Aircraft Code</td><td>Origin</td><td>Destination</td><td>Departure Time</td><td>Arrival Time</td><td>Passengers</td><td>Cabin Type</td><td>Flight Number</td><td>Aircraft Code</td><td>Base Fare</td><td>Sale Tax</td><td>Total Fare</td>
+      </tr>
+    </thead>
+    <tbody id="results">
+      
+    </tbody>
+  </table>
 </div>
