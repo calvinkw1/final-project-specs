@@ -15,7 +15,7 @@ $(document).ready(function() {
       searchObjSave;
 
 
-  $(".search-input").submit(function(e) {
+  $("#search-input").submit(function(e) {
     e.preventDefault();
     uid = $("#uid").val();
     origin = $("#origin").val().toUpperCase();
@@ -96,12 +96,12 @@ $(document).ready(function() {
       success: function(data) {
         $(".results").show();
         $("#save-search").show();
-        $("tbody").empty();
+        $("#results").empty();
         console.log(data);
         results = data.results.trips.tripOption;
         flightData = data.results.trips.data;        
         for (var i = 0; i < results.length; i++) {
-          $("tbody").append("<tr id='result-row" + i + "'>");
+          $("#results").append("<tr id='result-row" + i + "'>");
           // Outbound flights
           $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].origin + "</td>");
           $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].destination + "</td>");
@@ -129,7 +129,12 @@ $(document).ready(function() {
     });
   }
 
+    $(".alerts").click(function() {
+      this.accordion({collapsible:true});
+    });
+
     $("#save").click(function(e) {
+      e.preventDefault();
       console.log(searchObjSave);
       $.ajax({
         url: '/save',
