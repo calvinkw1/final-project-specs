@@ -131,6 +131,7 @@ $(document).ready(function() {
 
   $(function() {
     $(".alerts").accordion({collapsible:true, active: false});
+    $(".search").accordion({collapsible:true});
   });
 
   $("#save").click(function(e) {
@@ -153,8 +154,8 @@ $(document).ready(function() {
         permittedCarrier: permittedCarrier,
         prohibitedCarrier: prohibitedCarrier
       },
-      success: function() {
-        window.location.href = "/";
+      success: function(data) {
+        console.log(data);
       }
     });
   });

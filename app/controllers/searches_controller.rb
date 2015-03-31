@@ -46,6 +46,14 @@ class SearchesController < ApplicationController
       permittedCarrier:params[:permittedCarrier],
       prohibitedCarrier:params[:prohibitedCarrier]
     )
+    respond_to do |format|
+      format.html { render nothing: true }
+    end
+  end
+
+  def destroy
+    alert = Alert.find params[:format]
+    alert.delete
     redirect_to root_path
   end
 

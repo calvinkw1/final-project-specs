@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   post 'login', to: "users#attempt_login"
 
+  delete '/delete', to: "searches#destroy", as: "delete_alert"
+
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 

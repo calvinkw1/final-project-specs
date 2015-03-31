@@ -20,7 +20,14 @@
 }
 
 #save-search {
-  /*display: none;*/
+  display: none;
   text-align: right;
 }
 
+.alerts {
+  width: 70%;
+}
+
+.search {
+  width: 45%;
+}
