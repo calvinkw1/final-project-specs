@@ -19,8 +19,18 @@ ActiveRecord::Schema.define(version: 20150327231314) do
   create_table "alerts", force: :cascade do |t|
     t.integer  "uid"
     t.string   "searchParams"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "origin"
+    t.string   "destination"
+    t.string   "departDate"
+    t.string   "returnDate"
+    t.integer  "adultCount"
+    t.integer  "childCount"
+    t.string   "maxPrice"
+    t.string   "preferredCabin"
+    t.string   "permittedCarrier"
+    t.string   "prohibitedCarrier"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "users", force: :cascade do |t|

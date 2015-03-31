@@ -29,10 +29,25 @@ class SearchesController < ApplicationController
   end
 
   def save
+    puts "THIS IS THE SESSION AGAIN"
+    puts session
     savedSearch = params[:savedSearch]
-    @saved = Alert.create(searchParams:savedSearch)
+    @saved = Alert.create(
+      uid:params[:uid],
+      searchParams:savedSearch,
+      origin:params[:origin],
+      destination:params[:destination],
+      departDate:params[:departDate],
+      returnDate:params[:returnDate],
+      adultCount:params[:adultCount],
+      childCount:params[:childCount],
+      maxPrice:params[:maxPrice],
+      preferredCabin:params[:preferredCabin],
+      permittedCarrier:params[:permittedCarrier],
+      prohibitedCarrier:params[:prohibitedCarrier]
+    )
     binding.pry
-    redirect_to users_main_path
+    redirect_to root_path
   end
 
 private 
@@ -42,5 +57,7 @@ private
       end
     end
     
+
+
 end
 

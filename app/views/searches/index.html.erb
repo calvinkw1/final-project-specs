@@ -2,7 +2,7 @@
 
 <div>
   <%= form_tag new_search_path, method: "post", id:"search-input" do %>
-
+    <%= hidden_field_tag(:uid, session[:user_id]) %>
   <div class="form-group">
     <%= text_field_tag(:origin, nil, placeholder:"Departure Airport") %>
     <%= text_field_tag(:destination, nil, placeholder:"Destination Airport") %>

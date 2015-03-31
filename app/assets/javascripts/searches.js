@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-  var origin,
+  var uid,
+      origin,
       destination,
       departDate,
       returnDate,
@@ -16,6 +17,7 @@ $(document).ready(function() {
 
   $("#search-input").submit(function(e) {
     e.preventDefault();
+    uid = $("#uid").val();
     origin = $("#origin").val().toUpperCase();
     destination = $("#destination").val().toUpperCase();
     departDate = $("#departDate").val();
@@ -128,12 +130,27 @@ $(document).ready(function() {
   }
 
     $("#save").click(function(e) {
-      e.preventDefault();
       console.log(searchObjSave);
       $.ajax({
         url: '/save',
         method: 'POST',
-        data: {savedSearch: JSON.stringify(searchObjSave)}
+        data: {
+          uid: uid,
+          savedSearch: JSON.stringify(searchObjSave),
+          origin: origin,
+          destination: destination,
+          departDate: departDate,
+          returnDate: returnDate,
+          adultCount: adultCount,
+          childCount: childCount,
+          maxPrice: maxPrice,
+          preferredCabin: preferredCabin,
+          permittedCarrier: permittedCarrier,
+          prohibitedCarrier: prohibitedCarrier
+        },
+        success: function() {
+          window.location.href = "/";
+        }
       });
     });
 

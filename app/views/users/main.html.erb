@@ -1,3 +1,58 @@
-<h1>Users#main</h1>
-<p>Find me in app/views/users/main.html.erb</p>
+<h1>User Home</h1>
 
+<p>Welcome <%= @user.first_name %></p>
+
+<div class="alerts">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>Origin</td><td>Destination</td><td>Departure Date</td><td>Return Date</td><td>Passengers: Adult</td><td>Passengers: Children</td><td>Max Price</td><td>Cabin Class</td><td>Preferred Airlines</td><td>Prohibited Airlines</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @alerts.each do |alert| %>
+        <tr>
+          <td><%= alert.origin %></td>
+          <td><%= alert.destination %></td>
+          <td><%= alert.departDate %></td>
+          <td><%= alert.returnDate %></td>
+          <td><%= alert.adultCount %></td>
+          <td><%= alert.childCount %></td>
+          <td><%= alert.maxPrice %></td>
+          <td><%= alert.preferredCabin %></td>
+          <td><%= alert.permittedCarrier %></td>
+          <td><%= alert.prohibitedCarrier %></td>        
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<div>
+  <%= form_tag new_search_path, method: "post", id:"search-input" do %>
+
+  <div class="form-group">
+    <%= text_field_tag(:origin, nil, placeholder:"Departure Airport") %>
+    <%= text_field_tag(:destination, nil, placeholder:"Destination Airport") %>
+  </div>
+  <div class="form-group">
+    <%= date_field_tag(:departDate, nil, placeholder:"Departure Date") %>
+    <%= date_field_tag(:returnDate, nil, placeholder:"Return Date") %>
+  </div>
+  <div class="form-group">
+    <%= text_field_tag(:adultCount, nil, placeholder:"Adults") %>
+    <%= text_field_tag(:childCount, nil, placeholder:"Children") %>
+    <%= text_field_tag(:maxPrice, nil, placeholder:"Max Price") %>
+  </div>
+  <div class="form-group">
+    <%= text_field_tag(:preferredCabin, nil, placeholder:"Cabin Class") %>
+    <%= text_field_tag(:permittedCarrier, nil, placeholder:"Preferred Airlines") %>
+    <%= text_field_tag(:prohibitedCarrier, nil, placeholder:"Prohibited Airlines") %>
+    <%= text_field_tag(:maxStops, nil, placeholder:"Stops") %>
+  </div>
+    <%= submit_tag("Search") %>
+  <% end %>
+</div>

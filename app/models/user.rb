@@ -4,9 +4,7 @@ class User < ActiveRecord::Base
     presence: true,
     uniqueness: true
 
-  # has_secure_password
-  # validates :username, presence: true
-  # validates :username, uniqueness: true
+    has_many :alerts
 
 
   def confirm(password_param)

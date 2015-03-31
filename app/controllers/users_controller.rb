@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
-  before_action :confirm_logged_in, only: [:home]
+  before_action :confirm_logged_in, only: [:home, :main]
   before_action :prevent_login_signup, only: [:signup, :login]
   def main
+    @user = User.find session[:user_id]
+    @alerts = Alert.where("uid = ?", session[:user_id])
   end
 
   def signup
@@ -21,17 +23,13 @@ class UsersController < ApplicationController
   end
 
   def attempt_login
-
     if params[:email].present? && params[:password].present?
       found_user = User.find_by_email params[:email]
-
       session[:user_id] = found_user.id
-
       if found_user
         authorized_user = found_user.confirm params[:password]
       end
     end
-
     if !found_user
       flash.now[:alert] = "Invalid email"
       render :login
@@ -41,7 +39,7 @@ class UsersController < ApplicationController
       render :login
 
     else
-      session[:user_id] = authorized_user.email
+      session[:user_id] = authorized_user.id
       redirect_to root_path, flash: {success: "You are now logged in."}
     end
   end

@@ -13,9 +13,10 @@
 </head>
 <body class = "container-fluid">
 <%= render 'shared/flash' %>
-
-<%= yield %>
 <%= render 'shared/loginOut' %>
 <%= link_to 'Monitoring', sidekiq_web_path %>
+
+<%= yield %>
+
 </body>
 </html>

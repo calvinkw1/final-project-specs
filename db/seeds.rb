@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.destroy_all
+Alert.destroy_all
 
 User.create(
   first_name: "Nick",
@@ -20,6 +21,36 @@ User.create(
   email: "calvinkw1@gmail.com",
   password: "password",
   # phone_num: "6503888988"
+  )
+
+Alert.create(
+  uid: 2,
+  searchParams: "asdiga8gh3g",
+  origin: "SFO",
+  destination: "HNL",
+  departDate: "2015-04-03",
+  returnDate: "2015-04-07",
+  adultCount: 2,
+  childCount: 0,
+  maxPrice: "USD1000.00",
+  preferredCabin: "COACH",
+  permittedCarrier: "UA",
+  prohibitedCarrier: ""
+  )
+
+Alert.create(
+  uid: 2,
+  searchParams: "askdaiurngo3g35g",
+  origin: "SFO",
+  destination: "LAS",
+  departDate: "2015-04-03",
+  returnDate: "2015-04-07",
+  adultCount: 2,
+  childCount: 0,
+  maxPrice: "USD1000.00",
+  preferredCabin: "COACH",
+  permittedCarrier: "VX",
+  prohibitedCarrier: ""
   )
 
  # 2   Sale Price: USD211.10
