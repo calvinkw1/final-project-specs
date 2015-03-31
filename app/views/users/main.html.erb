@@ -2,31 +2,31 @@
 
 <p>Welcome back, <%= @user.first_name %></p>
 
-<h3>Saved Alerts</h3>
 <div class="alerts">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <td>Origin</td><td>Destination</td><td>Departure Date</td><td>Return Date</td><td>Passengers: Adult</td><td>Passengers: Children</td><td>Max Price</td><td>Cabin Class</td><td>Preferred Airlines</td><td>Prohibited Airlines</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @alerts.each do |alert| %>
+  <h3>Saved Alerts</h3>
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td><%= alert.origin %></td>
-          <td><%= alert.destination %></td>
-          <td><%= alert.departDate %></td>
-          <td><%= alert.returnDate %></td>
-          <td><%= alert.adultCount %></td>
-          <td><%= alert.childCount %></td>
-          <td><%= alert.maxPrice %></td>
-          <td><%= alert.preferredCabin %></td>
-          <td><%= alert.permittedCarrier %></td>
-          <td><%= alert.prohibitedCarrier %></td>        
+          <td>Origin</td><td>Destination</td><td>Departure Date</td><td>Return Date</td><td>Passengers: Adult</td><td>Passengers: Children</td><td>Max Price</td><td>Cabin Class</td><td>Preferred Airlines</td><td>Prohibited Airlines</td>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @alerts.each do |alert| %>
+          <tr>
+            <td><%= alert.origin %></td>
+            <td><%= alert.destination %></td>
+            <td><%= alert.departDate %></td>
+            <td><%= alert.returnDate %></td>
+            <td><%= alert.adultCount %></td>
+            <td><%= alert.childCount %></td>
+            <td><%= alert.maxPrice %></td>
+            <td><%= alert.preferredCabin %></td>
+            <td><%= alert.permittedCarrier %></td>
+            <td><%= alert.prohibitedCarrier %></td>        
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
 
 

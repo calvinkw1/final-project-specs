@@ -129,35 +129,35 @@ $(document).ready(function() {
     });
   }
 
-    $(".alerts").click(function() {
-      this.accordion({collapsible:true});
-    });
+  $(function() {
+    $(".alerts").accordion({collapsible:true, active: false});
+  });
 
-    $("#save").click(function(e) {
-      e.preventDefault();
-      console.log(searchObjSave);
-      $.ajax({
-        url: '/save',
-        method: 'POST',
-        data: {
-          uid: uid,
-          savedSearch: JSON.stringify(searchObjSave),
-          origin: origin,
-          destination: destination,
-          departDate: departDate,
-          returnDate: returnDate,
-          adultCount: adultCount,
-          childCount: childCount,
-          maxPrice: maxPrice,
-          preferredCabin: preferredCabin,
-          permittedCarrier: permittedCarrier,
-          prohibitedCarrier: prohibitedCarrier
-        },
-        success: function() {
-          window.location.href = "/";
-        }
-      });
+  $("#save").click(function(e) {
+    e.preventDefault();
+    console.log(searchObjSave);
+    $.ajax({
+      url: '/save',
+      method: 'POST',
+      data: {
+        uid: uid,
+        savedSearch: JSON.stringify(searchObjSave),
+        origin: origin,
+        destination: destination,
+        departDate: departDate,
+        returnDate: returnDate,
+        adultCount: adultCount,
+        childCount: childCount,
+        maxPrice: maxPrice,
+        preferredCabin: preferredCabin,
+        permittedCarrier: permittedCarrier,
+        prohibitedCarrier: prohibitedCarrier
+      },
+      success: function() {
+        window.location.href = "/";
+      }
     });
+  });
 
 
 });
