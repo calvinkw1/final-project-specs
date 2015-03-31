@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
   @m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
 
   def welcome_email(user)
-    # require 'mandrill'
+    require 'mandrill'
     m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
     message = {  
        :subject=> "Thanks for signing up!",  
@@ -17,14 +17,14 @@ class UserMailer < ApplicationMailer
        ],  
        :html=>"<html><h1>Thanks for signing up!</h1></html>",  
        :from_name=>"Team @ getmeflights",
-       :from_email=>"<getmeflights@gmail.com>"
+       :from_email=>"getmeflights@gmail.com"
       }
       sending = m.messages.send message  
       puts sending
   end
 
   def alert_email
-    # require 'mandrill'
+    require 'mandrill'
     m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
     # user = User.all[0]
     message = {  
@@ -63,18 +63,19 @@ class UserMailer < ApplicationMailer
          }  
        ],  
        :html=>"<html><h1>Hi <strong>message</strong>, how are you?</h1></html>",  
-       :from_name=>"Team @ getmeflights",
-       :from_email=>"<getmeflights@gmail.com>"
-      }  
+       :from_name=>"Team at getmeflights",
+       :from_email=>"getmeflights@gmail.com"
+      }
       sending = m.messages.send message  
       puts sending
   end
   
   def admin_email
-      # require 'mandrill'
+      require 'mandrill'
       m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
-      # @user = User.all[0]
+      user = User.all[0]
       message = {  
+        :tags =>["admin"],
          :subject=> "Admin Report",  
          :from_name=> "Team at getmeflights",  
          :text=>"Team @ getmeflights => ALERTS",
@@ -84,24 +85,28 @@ class UserMailer < ApplicationMailer
            }  
          ],  
          :html=>"<html><h1>Admin Report</h1>
-         <p>#{@user}</p> </html>",  
+         <p>#{user}</p> </html>",  
          :from_email=>"getmeflights@gmail.com",
          :from_name=>"Team at getmeflights"
         
-        }  
-
+        } 
+ message[:html] = "<html>
+        <h1>Admin Report</h1>
+        <p>Hey " + user.first_name + user.last_name + "</p>" + "
+        <p>Hard coding hash override in method<br> admin email</p>
+        <p>" + user.email + "</p></html>"          
         sending = m.messages.send message  
         puts sending
         puts "sending admin email on the hourly" 
   end
 
   def nightly_update
-
+puts "nightly_update"
     users = User.all
+    
     users.each do |user|
     require 'mandrill'
     m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
-    
     message = {  
        :subject=> "Your Flight Alerts!",  
        :from_name=> "Team @ getmeflights",
@@ -113,8 +118,8 @@ class UserMailer < ApplicationMailer
        ],  
        :html=>"<html><h1>Hi <strong>message</strong>, how are you?</h1></html>",  
        :from_name=>"Team @ getmeflights",
-       :from_email=>"<getmeflights@gmail.com>"
-      }  
+       :from_email=>"getmeflights@gmail.com"
+      }
       sending = m.messages.send message  
       puts sending
     end

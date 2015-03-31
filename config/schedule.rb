@@ -24,9 +24,9 @@ every 1.day, :at => "10:25pm" do
 end
 
 # FOR TESTING ONLY REMOVE ONCE CONFIRMED
-every 10.minutes do
-  runner "UserMailer.nightly_update.deliver_now"
-end
+# every 10.minutes do
+#   runner "UserMailer.nightly_update.deliver_now"
+# end
 
 
 every 1.hour do
@@ -34,10 +34,18 @@ every 1.hour do
 end
 
 # FOR TESTING ONLY REMOVE ONCE CONFIRMED
-every 10.minutes do
-  runner "UserMailer.admin_email.deliver_now"
+every 1.minutes do
+ command "whenever -i"
+ puts "ran whenever update"
+  # runner "UserMailer.admin_email.deliver_now"
+end
+every 1.hour do
+   puts "1 Hour"
 end
 
+every 5.minutes do
+   puts "5 Minutes"
+end
 
 every 1.minutes do
   puts "Testing Runner"
