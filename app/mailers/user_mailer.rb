@@ -18,7 +18,7 @@ class UserMailer < ApplicationMailer
        :html=>"<html><h1>Thanks for signing up!</h1></html>",  
        :from_name=>"Team @ getmeflights",
        :from_email=>"<getmeflights@gmail.com>"
-      }  
+      }
       sending = m.messages.send message  
       puts sending
   end
@@ -29,7 +29,7 @@ class UserMailer < ApplicationMailer
     # user = User.all[0]
     message = {  
        :subject=> "Hourly Alerts!",  
-       :from_name=> "Team @ getmeflights",  
+       :from_name=> "Team at getmeflights",  
        :text=>"Team @ getmeflights => ALERTS",
        :to=>[  {
            :email=> "designmarz@gmail.com",  
@@ -37,12 +37,16 @@ class UserMailer < ApplicationMailer
          }  
        ],  
        :html=>"<html><h1>Hourly Alert Test</h1></html>",  
-       :from_name=>"Team @ getmeflights",
-       :from_email=>"<getmeflights@gmail.com>"
+       :from_email=>"getmeflights@gmail.com",
+       :from_name=>"Team at getmeflights"
+      
       }  
       sending = m.messages.send message  
       puts sending
     
+  end
+  def testing
+    puts "Testing!"
   end
 
   def email_name
@@ -65,7 +69,32 @@ class UserMailer < ApplicationMailer
       sending = m.messages.send message  
       puts sending
   end
-
+  
+  def admin_email
+      require 'mandrill'
+      m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
+      @user = User.all[0]
+      binding.pry
+      message = {  
+         :subject=> "Admin Report",  
+         :from_name=> "Team at getmeflights",  
+         :text=>"Team @ getmeflights => ALERTS",
+         :to=>[  {
+             :email=> "designmarz@gmail.com",  
+             :name=> "Nick"  
+           }  
+         ],  
+         :html=>"<html><h1>Admin Report</h1>
+         <p>#{@user}</p> </html>",  
+         :from_email=>"getmeflights@gmail.com",
+         :from_name=>"Team at getmeflights"
+        
+        }  
+        binding.pry
+        sending = m.messages.send message  
+        puts sending
+        puts "sending admin email on the hourly" 
+  end
   
 
 end
