@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-      UserMailer.welcome_email(@user).deliver_later
+      UserMailer.welcome_email(@user).deliver_now
       session[:user_id] = @user.id
       flash[:success] = "User was successfully created."
       redirect_to root_path
