@@ -131,6 +131,7 @@ $(document).ready(function() {
 
   $(function() {
     $(".alerts").accordion({collapsible:true, active: false});
+    $(".search").accordion({collapsible:true});
   });
 
   $("#save").click(function(e) {
