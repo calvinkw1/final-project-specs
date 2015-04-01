@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'searches/index'
 
                       #will need to change this back to searches#new 
-  post '/search', to: 'searches#alertSearch', as: 'new_search'
+  post '/search', to: 'searches#new', as: 'new_search'
 
   post '/save', to: 'searches#save', as: 'save_search'
 
