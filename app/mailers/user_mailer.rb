@@ -150,28 +150,9 @@ class UserMailer < ApplicationMailer
         <h1>getmeflights Updates!</h1>
         <p>Hey " + user.first_name + user.last_name + "</p>" + "
         <p>" + user.email + "</p>
-        <p>
-<table>
-  <thead>
-    <tr>
-    <td>Origin</td><td>Destination</td><td>Departure</td><td>Return</td><td>Adults</td><td>Children</td><td>Max Price</td><td>Cabin Class</td><td>Preferred Airlines</td>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-<td>" + searches.origin + "</td>
-<td>" + searches.destination + "</td>
-<td>" + searches.departDate + "</td>
-<td>" + searches.returnDate + "</td>
-<td>" + searches.adultCount.to_s + "</td>
-<td>" + searches.childCount.to_s + "</td>
-<td> $" + searches.maxPrice.to_s + "</td>
-<td>" + searches.preferredCabin + "</td>
-<td>" + searches.permittedCarrier[2..3] + "</td>
-      </tr>
-  </tbody>
-</table>
-</html>"
+
+        <p> <a href='https://www.google.com/flights/#search;f=" + searches.origin +
+        ";t=" + searches.destination + ";d=" + searches.departDate + ";r=" + searches.returnDate + "'>We found your trip!</a></html>"
       binding.pry
       sending = m.messages.send message  
       puts sending
