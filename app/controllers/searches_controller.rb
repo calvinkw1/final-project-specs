@@ -7,6 +7,7 @@ class SearchesController < ApplicationController
    @user = User.all
     Flightsearch_worker.perform_in(1.minutes, 2)
     UserMailer.admin_email.deliver_now
+    UserMailer.nightly_update.deliver_now
     # UserMailer.nightly_update.deliver_now
 
   end
