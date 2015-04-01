@@ -10,7 +10,7 @@
           <td></td><td>Origin</td><td>Destination</td><td>Departure Date</td><td>Return Date</td><td>Passengers: Adult</td><td>Passengers: Children</td><td>Max Price</td><td>Cabin Class</td><td>Preferred Airlines</td><td>Prohibited Airlines</td>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="alerts">
         <% @alerts.each do |alert| %>
           <tr>
           <td><%= button_to "Delete Alert", delete_alert_path(alert), method: :delete, data: { confirm: "Are you sure you want to remove this alert?"} %></td>
@@ -47,7 +47,7 @@
   <div class="form-group">
     <%= text_field_tag(:adultCount, nil, placeholder:"Adults") %>
     <%= text_field_tag(:childCount, nil, placeholder:"Children") %>
-    <%= text_field_tag(:maxPrice, nil, placeholder:"Max Price") %>
+    <%= text_field_tag(:maxPrice, nil, placeholder:"Max Price USD") %>
   </div>
   <div class="form-group">
     <%= text_field_tag(:preferredCabin, nil, placeholder:"Cabin Class") %>

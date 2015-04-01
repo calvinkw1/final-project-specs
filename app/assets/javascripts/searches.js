@@ -101,6 +101,9 @@ $(document).ready(function() {
         results = data.results.trips.tripOption;
         flightData = data.results.trips.data;        
         for (var i = 0; i < results.length; i++) {
+          // build on the below to avoid appending over and over again, and to avoid breakage from the append.
+          // var out = "<tr id='result-row" + i + "'>";
+          // out += "<td>" + results[i].slice[0].segment[0].leg[0].origin + "</td>";
           $("#results").append("<tr id='result-row" + i + "'>");
           // Outbound flights
           $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].origin + "</td>");
@@ -125,6 +128,8 @@ $(document).ready(function() {
           $("#result-row" + i).append("<td>" + results[i].pricing[0].saleTaxTotal + "</td>");
           $("#result-row" + i).append("<td>" + results[i].saleTotal + "</td>");
         }
+                // $("body").scrollTo("#results");
+
       }
     });
   }
@@ -156,6 +161,21 @@ $(document).ready(function() {
       },
       success: function(data) {
         console.log(data);
+        var html;
+        html += "<tr>";
+        html += "<td>Refresh to Delete</td>";
+        html += "<td>" + data.origin + "</td>";
+        html += "<td>" + data.destination + "</td>";
+        html += "<td>" + data.departDate + "</td>";
+        html += "<td>" + data.returnDate + "</td>";
+        html += "<td>" + data.adultCount + "</td>";
+        html += "<td>" + data.childCount + "</td>";
+        html += "<td>" + data.maxPrice + "</td>";
+        html += "<td>" + data.preferredCabin + "</td>";
+        html += "<td>" + data.permittedCarrier + "</td>";
+        html += "<td>" + data.prohibitedCarrier + "</td>";
+        html += "</tr>";
+        $("#alerts").append(html);
       }
     });
   });

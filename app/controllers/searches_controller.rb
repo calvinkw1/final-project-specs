@@ -45,7 +45,7 @@ class SearchesController < ApplicationController
       prohibitedCarrier:params[:prohibitedCarrier]
     )
     respond_to do |format|
-      format.html { render nothing: true }
+      format.json { render json: @saved }
     end
   end
 
