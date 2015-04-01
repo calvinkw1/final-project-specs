@@ -24,6 +24,10 @@ every 1.day, :at => "10:25pm" do
 end
 
 # FOR TESTING ONLY CHANGE TIME ONCE CONFIRMED
+every 1.day, :at => "9:25am" do
+  runner "SearchesController.alertSearch"
+end
+
 every 1.day, :at => "10:25am" do
   runner "UserMailer.nightly_update.deliver_now"
 end

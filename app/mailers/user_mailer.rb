@@ -124,14 +124,14 @@ class UserMailer < ApplicationMailer
   end
 
   def nightly_update
-  # puts "nightly_update"
+  binding.pry
     users = User.all
     users.each do |user|
     searches = Alert.find_by_uid(user.id)
     # if check to see run the search and check the pricing before
     # moving on to emailing the user of the updates
     binding.pry
-      if alertSearch(user)
+      if searches.search
         binding.pry
         require 'mandrill'
         m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA' # add ENV keys with refreshed keys, do not use these
