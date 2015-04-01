@@ -10,7 +10,7 @@ $(document).ready(function() {
       maxPrice = 0,
       maxStops = 0,
       preferredCabin = "COACH",
-      permittedCarrier = [""],
+      permittedCarrier = "" || undefined,
       prohibitedCarrier = [""],
       searchObjSave;
 
@@ -26,7 +26,7 @@ $(document).ready(function() {
     childCount = parseInt($("#childCount").val(), 10);
     maxPrice = "USD" + $("#maxPrice").val() + ".00";
     maxStops = parseInt($("#maxStops").val(), 10);
-    preferredCabin = $("#preferredCabin").val().toUpperCase();
+    preferredCabin = $("#preferredCabin").val().toUpperCase().split(",");
     permittedCarrier = $("#permittedCarrier").val().toUpperCase().split(",");
     prohibitedCarrier = prohibitedCarrier;
     startAPICall();
@@ -135,8 +135,8 @@ $(document).ready(function() {
   }
 
   $(function() {
-    $(".alerts").accordion({collapsible:true, active: false});
-    $(".search").accordion({collapsible:true});
+    $(".alerts").accordion({collapsible:true});
+    $(".search").accordion({collapsible:true, active: true});
   });
 
   $("#save").click(function(e) {
@@ -156,8 +156,8 @@ $(document).ready(function() {
         childCount: childCount,
         maxPrice: maxPrice,
         preferredCabin: preferredCabin,
-        permittedCarrier: permittedCarrier,
-        prohibitedCarrier: prohibitedCarrier
+        permittedCarrier: permittedCarrier.join(),
+        prohibitedCarrier: prohibitedCarrier.join()
       },
       success: function(data) {
         console.log(data);
@@ -172,8 +172,12 @@ $(document).ready(function() {
         html += "<td>" + data.childCount + "</td>";
         html += "<td>" + data.maxPrice + "</td>";
         html += "<td>" + data.preferredCabin + "</td>";
-        html += "<td>" + data.permittedCarrier + "</td>";
-        html += "<td>" + data.prohibitedCarrier + "</td>";
+        if (data.permittedCarrier !== "") {
+          html += "<td>" + data.permittedCarrier + "</td>";
+        }
+        if (data.prohibitedCarrier !== "") {
+          html += "<td>" + data.prohibitedCarrier + "</td>";
+        }
         html += "</tr>";
         $("#alerts").append(html);
       }
