@@ -6,9 +6,8 @@ class Flightsearch_worker
     puts "Job ##{count}: Late night, so tired..."
   end
 
-  def self.late_night_work
-    10.times do |x|
-      perform_async(x)
-    end
+  def nightly_search(user)
+    # add logic to run searchs for all users here
   end
+
 end

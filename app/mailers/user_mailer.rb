@@ -1,21 +1,22 @@
 class UserMailer < ApplicationMailer
-  require 'mandrill'
+  include ApplicationHelper
+  require 'mandrill' # wondering still if I need all the requires?
   default from: 'getmeflights@gmail.com'
-  @m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
+  @m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA' # remove?
 
   def welcome_email(user)
     require 'mandrill'
-    m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
+    m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA' # add ENV keys with refreshed keys, do not use these
     message = {  
        :subject=> "Thanks for signing up!",  
        :from_name=> "#{user.email}",  
-       :text=>"ALERTS",
+       :text=>"Thanks for signing up!",
        :to=>[  {
            :email=> user.email,
            :name=> user.first_name  
          }  
        ],  
-       :html=>"<html><h1>Thanks for signing up!</h1></html>",  
+       :html=>"<html><h1>Thanks for signing up!</h1></html>",  # add styling here
        :from_name=>"Team @ getmeflights",
        :from_email=>"getmeflights@gmail.com"
       }
@@ -23,9 +24,9 @@ class UserMailer < ApplicationMailer
       puts sending
   end
 
-  def alert_email
+  def alert_email # add field for logged in user, or remove maybe?
     require 'mandrill'
-    m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
+    m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA' # add ENV keys with refreshed keys, do not use these
     # user = User.all[0]
     message = {  
        :subject=> "Hourly Alerts!",  
@@ -45,13 +46,10 @@ class UserMailer < ApplicationMailer
       puts sending
     
   end
-  def testing
-    puts "Testing!"
-  end
-
+  
   def email_name
     require 'mandrill'
-    m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
+    m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA' # add ENV keys with refreshed keys, do not use these
     user = User.all[0]
     message = {  
        :subject=> "Your Flight Alerts!",  
@@ -72,7 +70,7 @@ class UserMailer < ApplicationMailer
   
   def admin_email
       require 'mandrill'
-      m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
+      m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA' # add ENV keys with refreshed keys, do not use these
       user = User.all[0]
       searches = Alert.find_by_uid(user.id)
       binding.pry
@@ -91,73 +89,76 @@ class UserMailer < ApplicationMailer
          :from_name=>"Team at getmeflights"
         
         }   
- message[:html] =
-"<html>
-        <h1>Admin Report</h1>
-        <p>Hey " + user.first_name + user.last_name + "</p>" + "
-        <p>Hard coding hash override in method<br> admin email</p>
-        <p>" + user.email + "</p>
-        <p>
-<table>
-  <thead>
-    <tr>
-    <td>Origin</td><td>Destination</td><td>Departure</td><td>Return</td><td>Adults</td><td>Children</td><td>Max Price</td><td>Cabin Class</td><td>Preferred Airlines</td>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-<td>" + searches.origin + "</td>
-<td>" + searches.destination + "</td>
-<td>" + searches.departDate + "</td>
-<td>" + searches.returnDate + "</td>
-<td>" + searches.adultCount.to_s + "</td>
-<td>" + searches.childCount.to_s + "</td>
-<td> $" + searches.maxPrice.to_s + "</td>
-<td>" + searches.preferredCabin + "</td>
-<td>" + searches.permittedCarrier[2..3] + "</td>
-      </tr>
-  </tbody>
-</table>
-</html>"
-        binding.pry         
-        sending = m.messages.send message  
-        puts sending
-        puts "sending admin email on the hourly" 
+     message[:html] =
+                    "<html>
+                            <h1>Admin Report</h1>
+                            <p>Hey " + user.first_name + user.last_name + "</p>" + "
+                            <p>Hard coding hash override in method<br> admin email</p>
+                            <p>" + user.email + "</p>
+                            <p>
+                      <table>
+                        <thead>
+                          <tr>
+                          <td>Origin</td><td>Destination</td><td>Departure</td><td>Return</td><td>Adults</td><td>Children</td><td>Max Price</td><td>Cabin Class</td><td>Preferred Airlines</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              <td>" + searches.origin + "</td>
+                              <td>" + searches.destination + "</td>
+                              <td>" + searches.departDate + "</td>
+                              <td>" + searches.returnDate + "</td>
+                              <td>" + searches.adultCount.to_s + "</td>
+                              <td>" + searches.childCount.to_s + "</td>
+                              <td> $" + searches.maxPrice.to_s + "</td>
+                              <td>" + searches.preferredCabin + "</td>
+                              <td>" + searches.permittedCarrier[2..3] + "</td>
+                            </tr>
+                        </tbody>
+                      </table> </p>
+                    </html>"
+            binding.pry         
+            sending = m.messages.send message  
+            puts sending
+            puts "sending admin email on the hourly" 
   end
 
   def nightly_update
-  puts "nightly_update"
+  # puts "nightly_update"
     users = User.all
-    
     users.each do |user|
     searches = Alert.find_by_uid(user.id)
-    require 'mandrill'
-    m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA'
-    message = {  
-       :subject=> "Your Flight Alerts!",  
-       :from_name=> "Team @ getmeflights",
-       :text=>"Nightly Update #{user.first_name}",
-       :to=>[  {
-           :email=> user.email,  
-           :name=> user.first_name  
-         }  
-       ],  
-       :html=>"<html><h1>Hi <strong>message</strong>, how are you?</h1></html>",  
-       :from_name=>"Team @ getmeflights",
-       :from_email=>"getmeflights@gmail.com"
-      }
-      message[:html] = "<html>
-        <h1>getmeflights Updates!</h1>
-        <p>Hey " + user.first_name + user.last_name + "</p>" + "
-        <p>" + user.email + "</p>
-
-        <p> <a href='https://www.google.com/flights/#search;f=" + searches.origin +
-        ";t=" + searches.destination + ";d=" + searches.departDate + ";r=" + searches.returnDate + "'>We found your trip!</a></html>"
-      binding.pry
-      sending = m.messages.send message  
-      puts sending
+    # if check to see run the search and check the pricing before
+    # moving on to emailing the user of the updates
+    binding.pry
+      if alertSearch(user)
+        binding.pry
+        require 'mandrill'
+        m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA' # add ENV keys with refreshed keys, do not use these
+        message = {  
+           :subject=> "Your Flight Alerts!",  
+           :from_name=> "Team @ getmeflights",
+           :text=>"Your flights update #{user.first_name}",
+           :to=>[  {
+               :email=> user.email,  
+               :name=> user.first_name  
+             }  
+           ],  
+           :html=>"TO BE REPLACED",  
+           :from_name=>"Team @ getmeflights",
+           :from_email=>"getmeflights@gmail.com"
+          } # override the defualt html section with dynamic information on searches
+          message[:html] = "<html> 
+            <h1>getmeflights Updates!</h1>
+            <p>Hey " + user.first_name + " we found your flight!</p>
+            <p> Click below to find them now </p>
+            <p> <a href='https://www.google.com/flights/#search;f=" + searches.origin +
+            ";t=" + searches.destination + ";d=" + searches.departDate + ";r=" + searches.returnDate + "'>We found your trip!</a></html>"
+          binding.pry # look into including img & css inline #remove binding.pry
+          sending = m.messages.send message  
+          puts sending
+      end
     end
   end
-  
 
 end

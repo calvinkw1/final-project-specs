@@ -9,7 +9,7 @@ class SearchesController < ApplicationController
     # UserMailer.admin_email.deliver_now
     UserMailer.nightly_update.deliver_now
     # UserMailer.nightly_update.deliver_now
-
+    # remove all of the above, only for testing
   end
 
   def new
@@ -50,7 +50,7 @@ class SearchesController < ApplicationController
     @results['trips']['tripOption'].each do |trip|
       fare = trip['saleTotal'].slice(3, trip['saleTotal'].length).to_i
       if fare <= budget
-        puts fare
+        puts fare #and triggers email runner UserMailer.nightly_update.deliver_now(pass in user here i think)
       end
     end
     render nothing: true
