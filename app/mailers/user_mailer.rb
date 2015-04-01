@@ -128,11 +128,12 @@ class UserMailer < ApplicationMailer
     users = User.all
     users.each do |user|
     searches = Alert.find_by_uid(user.id)
+    # searches = Alert.where(uid:?, user.id)
     # if check to see run the search and check the pricing before
     # moving on to emailing the user of the updates
-    binding.pry
+    
       if searches.search
-        binding.pry
+        
         require 'mandrill'
         m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA' # add ENV keys with refreshed keys, do not use these
         message = {  
@@ -154,7 +155,7 @@ class UserMailer < ApplicationMailer
             <p> Click below to find them now </p>
             <p> <a href='https://www.google.com/flights/#search;f=" + searches.origin +
             ";t=" + searches.destination + ";d=" + searches.departDate + ";r=" + searches.returnDate + "'>We found your trip!</a></html>"
-          binding.pry # look into including img & css inline #remove binding.pry
+           # look into including img & css inline #remove 
           sending = m.messages.send message  
           puts sending
       end

@@ -5,7 +5,6 @@ class SearchesController < ApplicationController
 
   def index
    @user = User.all
-   binding.pry
     # Flightsearch_worker.perform_in(1.minutes, 2)
     # UserMailer.admin_email.deliver_now
     UserMailer.nightly_update.deliver_now
@@ -38,8 +37,18 @@ class SearchesController < ApplicationController
     # return results into iVar
     # iterate thru iVar to check if price matches saved budget
     # if match, then fire off email to user
-    reqBody = params[:qpxData] # pass in the stringified json obj here from the alerts table
-    budget = 870.00
+    puts "ALERT SEARCH"
+    users = User.all
+    users.each do |user|
+  
+    searches = Alert.where("uid = ?", user.id).limit(2)
+    searches.each do |search|
+
+    reqBody = search.searchParams.to_s
+    maxPrice = search.maxPrice
+    # params[:qpxData] # pass in the stringified json obj here from the alerts table
+    budget = maxPrice.slice(3, maxPrice.length).to_i
+
     flightRequest = Typhoeus::Request.new(
       "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyDE6F79FbnrSc9hZlurECTyBJoEyHCj-Nc",
       method: :post,
@@ -47,14 +56,20 @@ class SearchesController < ApplicationController
       body: reqBody,
     )
     flightRequest.run
+
     @results = JSON.parse(flightRequest.response.body)
     @results['trips']['tripOption'].each do |trip|
       fare = trip['saleTotal'].slice(3, trip['saleTotal'].length).to_i
       if fare <= budget
+        search.update_attributes search: true
         puts fare #and triggers email runner UserMailer.nightly_update.deliver_now(pass in user here i think)
+      else 
+        search.update_attributes search: false
       end
+
     end
-    render nothing: true
+    end
+    
     # respond_to do |format|
     #   format.html
     #   format.json { render json: {
@@ -62,6 +77,8 @@ class SearchesController < ApplicationController
     #     }
     #   }
     # end
+  end
+      render nothing: true
   end
 
   def save

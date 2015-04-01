@@ -24,9 +24,9 @@ every 1.day, :at => "10:25pm" do
 end
 
 # FOR TESTING ONLY CHANGE TIME ONCE CONFIRMED
-every 1.day, :at => "9:25am" do
-  runner "SearchesController.alertSearch"
-end
+# every 1.minutes do
+#   runner "SearchesController.alertSearch"
+# end
 
 every 1.day, :at => "10:25am" do
   runner "UserMailer.nightly_update.deliver_now"
@@ -37,9 +37,30 @@ every 1.hour do
 end
 
 # FOR TESTING ONLY REMOVE ONCE CONFIRMED
+# every 1.minutes do #change time to 15 minutes
+#  command "whenever -i" #need to get thsi working
+#  puts "ran whenever update"
+#   # runner "UserMailer.admin_email.deliver_now" #remove this
+# end
+
+# every 1.minutes do #change time to 15 minutes
+#  command "/usr/bin/whenever -i" #need to get thsi working
+#  puts "ran whenever update"
+#   # runner "UserMailer.admin_email.deliver_now" #remove this
+# end
+
 every 1.minutes do #change time to 15 minutes
- command "whenever -i" #need to get thsi working
+ command "cd /Users/NickMarazzo/Desktop/final-project-specs/ && whenever -i" #need to get thsi working
  puts "ran whenever update"
   # runner "UserMailer.admin_email.deliver_now" #remove this
 end
+
+
+
+
+
+
+
+
+
 
