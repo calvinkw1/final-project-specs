@@ -23,38 +23,23 @@ every 1.day, :at => "10:25pm" do
   runner "UserMailer.admin_email.deliver_now"
 end
 
-# FOR TESTING ONLY REMOVE ONCE CONFIRMED
-# every 10.minutes do
-#   runner "UserMailer.nightly_update.deliver_now"
-# end
+# FOR TESTING ONLY CHANGE TIME ONCE CONFIRMED
+every 1.day, :at => "9:25am" do
+  runner "SearchesController.alertSearch"
+end
 
+every 1.day, :at => "10:25am" do
+  runner "UserMailer.nightly_update.deliver_now"
+end
 
 every 1.hour do
   runner "UserMailer.alert_email.deliver_now"
 end
 
 # FOR TESTING ONLY REMOVE ONCE CONFIRMED
-every 1.minutes do
- command "whenever -i"
+every 1.minutes do #change time to 15 minutes
+ command "whenever -i" #need to get thsi working
  puts "ran whenever update"
-  # runner "UserMailer.admin_email.deliver_now"
+  # runner "UserMailer.admin_email.deliver_now" #remove this
 end
-every 1.hour do
-   puts "1 Hour"
-end
-
-every 5.minutes do
-   puts "5 Minutes"
-end
-
-every 1.minutes do
-  puts "Testing Runner"
-end
-
-# every 1.day, :at => '1:00 pm' do
-#   i |= 0
-#   runner "Flightsearch_worker.perform(i)"
-#   i+=1
-# end
-
 

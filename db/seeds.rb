@@ -24,7 +24,7 @@ User.create(
   )
 
 Alert.create(
-  uid: 2,
+  uid: 4,
   searchParams: "asdiga8gh3g",
   origin: "SFO",
   destination: "HNL",
@@ -39,7 +39,7 @@ Alert.create(
   )
 
 Alert.create(
-  uid: 2,
+  uid: 4,
   searchParams: "askdaiurngo3g35g",
   origin: "SFO",
   destination: "LAS",
@@ -52,7 +52,35 @@ Alert.create(
   permittedCarrier: "VX",
   prohibitedCarrier: ""
   )
+Alert.create(
+  uid: 5,
+  searchParams: "asdiga8gh3g",
+  origin: "SFO",
+  destination: "HNL",
+  departDate: "2015-04-03",
+  returnDate: "2015-04-07",
+  adultCount: 2,
+  childCount: 0,
+  maxPrice: "USD1000.00",
+  preferredCabin: "COACH",
+  permittedCarrier: "UA",
+  prohibitedCarrier: ""
+  )
 
+Alert.create(
+  uid: 5,
+  searchParams: "askdaiurngo3g35g",
+  origin: "SFO",
+  destination: "LAS",
+  departDate: "2015-04-03",
+  returnDate: "2015-04-07",
+  adultCount: 2,
+  childCount: 0,
+  maxPrice: "USD1000.00",
+  preferredCabin: "COACH",
+  permittedCarrier: "VX",
+  prohibitedCarrier: ""
+  )
  # 2   Sale Price: USD211.10
            # VX 936 SFO 2015-03-31T16:10-07:00 LAX 2015-03-31T17:30-07:00
 

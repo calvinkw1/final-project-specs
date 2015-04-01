@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20150401181437_add_search_to_alerts.rb
