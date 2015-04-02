@@ -13,12 +13,14 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 </head>
 <body class = "container-fluid">
+<div class="opacity">
 <%= render 'shared/flash' %>
 <%= render 'shared/header' %>
 
 <div class="UI">
 <%= yield %>
 <%= link_to 'Monitoring', sidekiq_web_path %>
+</div>
 </div>
 </body>
 </html>
