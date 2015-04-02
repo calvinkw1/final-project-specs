@@ -37,17 +37,17 @@
   <%= form_tag new_search_path, method: "post", id:"search-input" do %>
     <%= hidden_field_tag(:uid, session[:user_id]) %>
   <div class="form-group">
-    <%= text_field_tag(:origin, nil, placeholder:"Departure Airport") %>
-    <%= text_field_tag(:destination, nil, placeholder:"Destination Airport") %>
+    <%= text_field_tag(:origin, nil, placeholder:"Departure Airport", required: true) %>
+    <%= text_field_tag(:destination, nil, placeholder:"Destination Airport", required: true) %>
   </div>
   <div class="form-group">
-    <%= date_field_tag(:departDate, Date.tomorrow) %>
-    <%= date_field_tag(:returnDate, Date.tomorrow+3) %>
+    <%= date_field_tag(:departDate, Date.tomorrow, required: true) %>
+    <%= date_field_tag(:returnDate, Date.tomorrow+3, required: true) %>
   </div>
   <div class="form-group">
-    <%= text_field_tag(:adultCount, nil, placeholder:"Adults") %>
+    <%= text_field_tag(:adultCount, nil, placeholder:"Adults", required: true) %>
     <%= text_field_tag(:childCount, nil, placeholder:"Children") %>
-    <%= text_field_tag(:maxPrice, nil, placeholder:"Max Price USD") %>
+    <%= text_field_tag(:maxPrice, nil, placeholder:"Max Price USD", required: true) %>
   </div>
   <div class="form-group">
     <%= text_field_tag(:preferredCabin, nil, placeholder:"Cabin Class") %>

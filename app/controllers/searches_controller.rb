@@ -4,81 +4,61 @@ class SearchesController < ApplicationController
   require 'json'
 
   def index
-   @user = User.all
-    # Flightsearch_worker.perform_in(1.minutes, 2)
-    # UserMailer.admin_email.deliver_now
-    UserMailer.nightly_update.deliver_now
-    # UserMailer.nightly_update.deliver_now
-    # remove all of the above, only for testing
   end
 
   def new
     reqBody = params[:qpxData]
     flightRequest = Typhoeus::Request.new(
-      "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyDE6F79FbnrSc9hZlurECTyBJoEyHCj-Nc",
+      "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + ENV["QPX_API_KEY"],
       method: :post,
       headers: {'Content-Type'=> "application/json; charset=utf-8"},
       body: reqBody,
-    )
+      )
     flightRequest.run
     @results = JSON.parse(flightRequest.response.body)
     respond_to do |format|
       format.html
       format.json { render json: {
         :results => @results
-        }
       }
+    }
     end
   end
 
   def alertSearch
-    # sidekiq will trigger the job which goes to the controller > method
-    # need code to run the api call via typhoeus
-    # return results into iVar
-    # iterate thru iVar to check if price matches saved budget
-    # if match, then fire off email to user
-    puts "ALERT SEARCH"
+      # sidekiq will trigger the job which goes to the controller > method
+      # need code to run the api call via typhoeus
+      # return results into iVar
+      # iterate thru iVar to check if price matches saved budget
+      # if match, then fire off email to user
     users = User.all
     users.each do |user|
-  
-    searches = Alert.where("uid = ?", user.id).limit(2)
-    searches.each do |search|
-
-    reqBody = search.searchParams.to_s
-    maxPrice = search.maxPrice
-    # params[:qpxData] # pass in the stringified json obj here from the alerts table
-    budget = maxPrice.slice(3, maxPrice.length).to_i
-
-    flightRequest = Typhoeus::Request.new(
-      "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyDE6F79FbnrSc9hZlurECTyBJoEyHCj-Nc",
-      method: :post,
-      headers: {'Content-Type'=> "application/json; charset=utf-8"},
-      body: reqBody,
-    )
-    flightRequest.run
-
-    @results = JSON.parse(flightRequest.response.body)
-    @results['trips']['tripOption'].each do |trip|
-      fare = trip['saleTotal'].slice(3, trip['saleTotal'].length).to_i
-      if fare <= budget
-        search.update_attributes search: true
-        puts fare #and triggers email runner UserMailer.nightly_update.deliver_now(pass in user here i think)
-      else 
-        search.update_attributes search: false
+      searches = Alert.where("uid = ?", user.id).limit(2)
+      searches.each do |search|
+        reqBody = search.searchParams.to_s
+        maxPrice = search.maxPrice
+        # params[:qpxData] # pass in the stringified json obj here from the alerts table
+        budget = maxPrice.slice(3, maxPrice.length).to_i
+        flightRequest = Typhoeus::Request.new(
+          "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + ENV["QPX_API_KEY"],
+          method: :post,
+          headers: {'Content-Type'=> "application/json; charset=utf-8"},
+          body: reqBody,
+        )
+        flightRequest.run
+        @results = JSON.parse(flightRequest.response.body)
+        @results['trips']['tripOption'].each do |trip|
+          fare = trip['saleTotal'].slice(3, trip['saleTotal'].length).to_i
+          if fare <= budget
+            search.update_attributes search: true
+            puts fare #and triggers email runner UserMailer.nightly_update.deliver_now(pass in user here i think)
+          else 
+            search.update_attributes search: false
+          end
+        end
       end
-
     end
-    end
-    
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: {
-    #     :results => @results
-    #     }
-    #   }
-    # end
-  end
-      render nothing: true
+    render nothing: true
   end
 
   def save
@@ -96,7 +76,7 @@ class SearchesController < ApplicationController
       preferredCabin:params[:preferredCabin],
       permittedCarrier:params[:permittedCarrier],
       prohibitedCarrier:params[:prohibitedCarrier]
-    )
+      )
     respond_to do |format|
       format.json { render json: @saved }
     end
@@ -108,13 +88,13 @@ class SearchesController < ApplicationController
     redirect_to root_path
   end
 
-private 
-    def confirm_logged_in
-      unless session[:user_id]
-        redirect_to login_path, alert: "Please log in"
-      end
+  private 
+  def confirm_logged_in
+    unless session[:user_id]
+      redirect_to login_path, alert: "Please log in"
     end
-    
+  end
+
 
 
 end
