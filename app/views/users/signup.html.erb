@@ -2,7 +2,7 @@
 <div class="logBox">
 <h2 class="title">Find your trip, for your price!</h2>
 <div class="signFields">
-<%= form_tag signup_path, method: "post", id:"user-input" do %>
+<%= form_tag create_user_path, method: "post", id:"user-input" do %>
 
   <%= label_tag(:first_name, "First Name", autofocus: true) %> <%= text_field_tag(:first_name) %> <br>
   <%= label_tag(:last_name, "Last Name") %>  <%= text_field_tag(:last_name) %> <br>
