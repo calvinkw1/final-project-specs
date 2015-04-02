@@ -1,14 +1,52 @@
-/*body.container-fluid {
-  background: url("gridmap2.jpg");
+body.container-fluid {
+  background: url("Sunriseairplane.jpg");
     background-size: cover;
     background-color: rgba(255, 255, 255, 0.52);
 }
-.opacity {
+/*.opacity {
   width: 100vw;
   height: 100vh;
   background-color: rgba(252, 252, 252, 0.39);
  }
 */
+input {
+  width: 150px;
+height: 26px;
+  margin: 5px;
+}
+form#search-input {
+  padding: 15px;
+  height: 240px;
+}
+input#adultCount {
+  width: 85px;
+}
+input#childCount {
+  width: 85px;
+}
+input#maxPrice {
+  width: 123px;
+}
+
+h1.header {
+  font-size: 49px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: -4px -2px 8px #948887;
+}
+h3.header {
+  text-align: center;
+  color: #ffffff;
+  text-shadow: -4px -2px 8px #948887;
+}
+
+h3#ui-id-1{
+padding: 5px;	
+}
+
+h3#ui-id-3 {
+  padding: 5px;
+}
 .results {
 	display: none;
 	margin-right: auto;
@@ -50,10 +88,11 @@
 	font-size: 18pt;
 }
 .signFields {
-	text-align: right;
-	margin-right: auto;
-	margin-left: auto;
-	font-size: 18pt;
+  text-align: end;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 18pt;
+  width: 50%;
 }
 
 h2.title {
