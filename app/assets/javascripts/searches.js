@@ -206,7 +206,6 @@ $(".alert-danger" ).fadeOut(6000);
 
 $(".alert-warning" ).fadeOut(6000);
 
-$("input#searcher").click().scrollTop($('#results').offset().top);
 
 
 });
