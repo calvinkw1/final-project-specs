@@ -34,6 +34,7 @@ $(document).ready(function() {
 
 
   function startAPICall() {
+    $("#loading").show();
     var reqBody = {
       "request": {
         "passengers": {
@@ -94,6 +95,7 @@ $(document).ready(function() {
       // contentType: "application/json; charset=utf-8",
       data: {qpxData: JSON.stringify(reqBody)},
       success: function(data) {
+        $("#loading").hide();
         $(".results").show();
         $("#save-search").show();
         $("#results").empty();
