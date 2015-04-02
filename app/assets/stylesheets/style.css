@@ -85,7 +85,7 @@ h3#ui-id-3 {
 	text-align: center;
 	margin-right: auto;
 	margin-left: auto;
-	font-size: 18pt;
+	font-size: 12pt;
 }
 .signFields {
   text-align: end;
@@ -143,4 +143,20 @@ input.btn.btn-primary {
 .signBox {
 	font-size: 14pt;
 	padding-right: 11px;
+}
+.footer {
+  text-align: right;
+	position:absolute;
+   bottom:10px;
+left: 5px;
+  width: 100vw;
+  color: #fff;
+  /*background-color: rgba(0, 0, 0, 0.74);*/
+  height: 70px;
+  margin-left: -15px;
+  margin-right: -15px;
+  }
+
+  div#loading {
+  text-align: center;
 }
