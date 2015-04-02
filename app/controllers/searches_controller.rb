@@ -25,7 +25,7 @@ class SearchesController < ApplicationController
     end
   end
 
-  def alertSearch
+  def self.alertSearch
       # sidekiq will trigger the job which goes to the controller > method
       # need code to run the api call via typhoeus
       # return results into iVar
@@ -58,7 +58,6 @@ class SearchesController < ApplicationController
         end
       end
     end
-    render nothing: true
   end
 
   def save
