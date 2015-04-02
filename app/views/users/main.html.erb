@@ -54,7 +54,7 @@
   <div class="form-group">
     
   </div> 
-    <%= submit_tag("Search", :class => 'btn-primary')%>
+    <%= submit_tag("Search", :class => 'btn-primary', :id => 'searcher')%>
   <% end %>
 </div>
 </div>
@@ -64,7 +64,7 @@
 <br>
 
 <div id="loading"><%= image_tag("723.GIF") %></div>
-<div class="results">
+<div class="results" id="results">
   <table class="table table-striped">
     <thead>
       <tr>
