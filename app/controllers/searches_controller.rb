@@ -58,7 +58,6 @@ class SearchesController < ApplicationController
         end
       end
     end
-    render nothing: true
   end
 
   def save
