@@ -9,9 +9,9 @@ $(document).ready(function() {
       childCount = 0,
       maxPrice = 0,
       maxStops = 0,
-      preferredCabin = "COACH",
-      permittedCarrier = "" || undefined,
-      prohibitedCarrier = [""],
+      preferredCabin = "",
+      permittedCarrier = "",
+      prohibitedCarrier = "",
       searchObjSave;
 
 
@@ -26,8 +26,8 @@ $(document).ready(function() {
     childCount = parseInt($("#childCount").val(), 10);
     maxPrice = "USD" + $("#maxPrice").val() + ".00";
     maxStops = parseInt($("#maxStops").val(), 10);
-    preferredCabin = $("#preferredCabin").val().toUpperCase().split(",");
-    permittedCarrier = $("#permittedCarrier").val().toUpperCase().split(",");
+    preferredCabin = $("#preferredCabin").val().toUpperCase();
+    permittedCarrier = $("#permittedCarrier").val().toUpperCase();
     prohibitedCarrier = prohibitedCarrier;
     startAPICall();
   });
@@ -58,9 +58,9 @@ $(document).ready(function() {
               "earliestTime": "",
               "latestTime": ""
             },
-            "permittedCarrier": permittedCarrier,
+            "permittedCarrier": [permittedCarrier],
             "alliance": "",
-            "prohibitedCarrier": prohibitedCarrier
+            "prohibitedCarrier": [prohibitedCarrier]
           },
           {
             "kind": "qpxexpress#sliceInput",
@@ -156,8 +156,8 @@ $(document).ready(function() {
         childCount: childCount,
         maxPrice: maxPrice,
         preferredCabin: preferredCabin,
-        permittedCarrier: permittedCarrier.join(),
-        prohibitedCarrier: prohibitedCarrier.join()
+        permittedCarrier: permittedCarrier,
+        prohibitedCarrier: prohibitedCarrier
       },
       success: function(data) {
         console.log(data);
@@ -169,14 +169,26 @@ $(document).ready(function() {
         html += "<td>" + data.departDate + "</td>";
         html += "<td>" + data.returnDate + "</td>";
         html += "<td>" + data.adultCount + "</td>";
-        html += "<td>" + data.childCount + "</td>";
+        if (data.childCount !== "") {
+          html += "<td>" + data.childCount + "</td>";
+        } else {
+          html += "<td></td>";
+        }
         html += "<td>" + data.maxPrice + "</td>";
-        html += "<td>" + data.preferredCabin + "</td>";
+        if (data.preferredCabin !== "") {
+          html += "<td>" + data.preferredCabin + "</td>";
+        } else {
+          html += "<td></td>";
+        }
         if (data.permittedCarrier !== "") {
           html += "<td>" + data.permittedCarrier + "</td>";
+        } else {
+          html += "<td></td>";
         }
         if (data.prohibitedCarrier !== "") {
           html += "<td>" + data.prohibitedCarrier + "</td>";
+        } else {
+          html += "<td></td>";
         }
         html += "</tr>";
         $("#alerts").append(html);
