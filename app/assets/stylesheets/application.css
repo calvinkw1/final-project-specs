@@ -15,3 +15,27 @@
  *= require jquery-ui/datepicker
  */
 
+
+.results {
+  display: none;
+}
+
+#loading {
+  display: none;
+  margin: 0 auto;
+  height: auto;
+  width: 40%;
+}
+
+#save-search {
+  display: none;
+  text-align: right;
+}
+
+.alerts {
+  width: 70%;
+}
+
+.search {
+  width: 45%;
+}
