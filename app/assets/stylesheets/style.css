@@ -26,7 +26,7 @@
 }
 
 .logBox {
-	width: 40%;
+	width: 50%;
 	background-color: lightblue;
 	margin-right: auto;
 	margin-left: auto;
@@ -34,6 +34,12 @@
 }
 .logFields {
 	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 18pt;
+}
+.signFields {
+	text-align: right;
 	margin-right: auto;
 	margin-left: auto;
 	font-size: 18pt;
