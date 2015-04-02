@@ -202,4 +202,6 @@ $(".alert-success" ).fadeOut(6000);
 
 $(".alert-danger" ).fadeOut(6000);
 
+$(".alert-warning" ).fadeOut(6000);
+
 });
