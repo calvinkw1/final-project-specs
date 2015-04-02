@@ -29,7 +29,6 @@ gem 'typhoeus'
 gem 'mandrill-api', require: 'mandrill'
 gem 'sidekiq'
 gem 'jquery-ui-rails', '~> 5.0.3'
-gem 'jquery_datepicker'
 gem 'json', '~> 1.8.2'
 gem "figaro"
 # Use Unicorn as the app server
