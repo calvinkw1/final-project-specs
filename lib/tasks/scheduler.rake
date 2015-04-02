@@ -6,7 +6,7 @@ namespace :scheduler do
 
   desc "TODO"
   task match_found_email: :environment do
-    UserMailer.nightly_update.deliver_now
+    UserMailer.nightly_update
   end
 
 end

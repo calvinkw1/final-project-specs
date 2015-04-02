@@ -73,7 +73,7 @@ class UserMailer < ApplicationMailer
       m = Mandrill::API.new 'ubbYv6wDtJu5N_4lHfJTdA' # add ENV keys with refreshed keys, do not use these
       user = User.all[0]
       searches = Alert.find_by_uid(user.id)
-      binding.pry
+
       message = {  
         :tags =>["admin"],
          :subject=> "Admin Report",  
@@ -117,14 +117,12 @@ class UserMailer < ApplicationMailer
                         </tbody>
                       </table> </p>
                     </html>"
-            binding.pry         
             sending = m.messages.send message  
             puts sending
             puts "sending admin email on the hourly" 
   end
 
-  def nightly_update
-  binding.pry
+  def self.nightly_update
     users = User.all
     users.each do |user|
     searches = Alert.find_by_uid(user.id)
