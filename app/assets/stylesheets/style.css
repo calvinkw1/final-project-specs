@@ -1,0 +1,36 @@
+.logBox {
+	width: 40%;
+	background-color: lightblue;
+	margin-right: auto;
+	margin-left: auto;
+	min-width: 320px;
+	height: 400px;
+}
+.logFields {
+	text-align: center;
+	/*width: 30%;*/
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 18pt;
+}
+
+h1.title {
+	text-align: center;
+	padding: 35px;
+}
+
+.links {
+	text-align: center;
+	margin-top: 30px;
+}
+
+input.btn.btn-primary {
+	border-radius: 0px;
+}
+
+.text-center.alert.alert-danger {
+	border-radius: 0px;
+	width: 100vw;
+	margin-left: -15px;
+	margin-right: -15px;
+}
