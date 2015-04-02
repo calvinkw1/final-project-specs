@@ -36,6 +36,8 @@ gem "figaro"
 gem 'sidekiq-scheduler', '~> 1'
 gem 'whenever', :require => false
 gem 'sinatra', :require => nil
+gem 'rails_12factor', group: :production
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
