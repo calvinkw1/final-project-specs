@@ -1,6 +1,5 @@
 <!-- <h1>User Home</h1> -->
-<div class="row .row">
-<h2 class="greet">Hey, <%= @user.first_name %></h2>
+<div class="row">
 
 <div class="alerts col-lg-6 col-md-6 col-sm-6">
  
@@ -21,7 +20,7 @@
             <td><%= alert.adultCount %> / <%= alert.childCount %></td>
             <td><%= alert.maxPrice %></td>
             <td><%= alert.preferredCabin %></td>
-            <td><%= alert.permittedCarrier %> / <%= alert.prohibitedCarrier %></td>        
+            <td><%= alert.permittedCarrier %> / <%= alert.prohibitedCarrier %> </td>        
           </tr>
         <% end %>
       </tbody>

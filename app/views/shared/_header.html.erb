@@ -1,6 +1,12 @@
 <div class="page-header">
   <h1 class="header">Get Me Flights <i class="fa fa-plane"></i></h1>
   
+  <h2 class="greet">
+    <% if @user %>
+
+    Hey, <%= @user.first_name %>
+    <% end -%>
+  </h2>
 
   <%= render 'shared/loginOut' %>
 </div>
