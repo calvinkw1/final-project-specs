@@ -2,10 +2,10 @@
 <div class="row">
 <h2>Welcome back, <%= @user.first_name %></h2>
 
-<div class="alerts col-md-8">
-<div class="bs-component">
+<div class="alerts col-md-6">
+<div class="bs-component well" data-example-id="hoverable-table">
   <h4>Saved Alerts</h4>
-    <table class="table table-striped table-hover ">
+    <table class="table-striped table-hover">
       <thead>
         <tr>
           <td></td><td>Origin - Destination</td><td>Depart - Return</td><td>Passengers: Adult / Children</td><td>Max Price</td><td>Cabin Class</td><td>Preferred Airlines</td><td>Prohibited Airlines</td>
@@ -13,7 +13,7 @@
       </thead>
       <tbody id="alerts">
         <% @alerts.each do |alert| %>
-          <tr>
+          <tr class="info">
           <td><%= button_to "Delete Alert", delete_alert_path(alert), :class => 'btn-warning', method: :delete, data: { confirm: "Are you sure you want to remove this alert?"} %></td>
             <td><%= alert.origin %> - <%= alert.destination %></td>
             <td><%= alert.departDate %> - <%= alert.returnDate %></td>
