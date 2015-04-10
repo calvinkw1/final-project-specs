@@ -1,27 +1,26 @@
 <!-- <h1>User Home</h1> -->
-<div class="row">
+<div class="row .row">
 <h2>Welcome back, <%= @user.first_name %></h2>
 
-<div class="alerts col-md-6">
+<div class="alerts col-lg-6 col-md-6 col-sm-6">
 <div class="bs-component well" data-example-id="hoverable-table">
-  <h4>Saved Alerts</h4>
+  
     <table class="table-striped table-hover">
       <thead>
         <tr>
-          <td></td><td>Origin - Destination</td><td>Depart - Return</td><td>Passengers: Adult / Children</td><td>Max Price</td><td>Cabin Class</td><td>Preferred Airlines</td><td>Prohibited Airlines</td>
+          <th>Saved Alerts</th><th>Origin - Destination</th><th>Depart - Return</th><th>Passengers: Adult/Children</th><th>Max Price</th><th>Cabin Class</th><th>Preferred Airlines / Prohibited Airlines</th>
         </tr>
       </thead>
       <tbody id="alerts">
         <% @alerts.each do |alert| %>
           <tr class="info">
-          <td><%= button_to "Delete Alert", delete_alert_path(alert), :class => 'btn-warning', method: :delete, data: { confirm: "Are you sure you want to remove this alert?"} %></td>
+          <td><%= button_to "Delete Alert", delete_alert_path(alert), :class => 'btn btn-raised btn-warning delBtn', method: :delete, data: { confirm: "Are you sure you want to remove this alert?"} %></td>
             <td><%= alert.origin %> - <%= alert.destination %></td>
             <td><%= alert.departDate %> - <%= alert.returnDate %></td>
             <td><%= alert.adultCount %> / <%= alert.childCount %></td>
             <td><%= alert.maxPrice %></td>
             <td><%= alert.preferredCabin %></td>
-            <td><%= alert.permittedCarrier %></td>
-            <td><%= alert.prohibitedCarrier %></td>        
+            <td><%= alert.permittedCarrier %> / <%= alert.prohibitedCarrier %></td>        
           </tr>
         <% end %>
       </tbody>
@@ -31,28 +30,28 @@
 
 
 
-<div class="search col-md-4">
+<div class="search col-lg-6 col-md-6 col-sm-6">
   <div class="searchHolder well">
   
   <%= form_tag new_search_path, method: "post", id:"search-input", :class =>  'form-horizontal' do %>
     <%= hidden_field_tag(:uid, session[:user_id]) %>
   <div class="form-group">
-  <h4>Search flights</h4>
+  <p>Search flights</p>
     <%= text_field_tag(:origin, nil, placeholder:"Departure Airport", :class =>  'form-control', autofocus: true,required: true) %> <%= text_field_tag(:destination, nil, placeholder:"Destination Airport", :class =>  'form-control', required: true) %> 
     <%= text_field_tag(:preferredCabin, nil, placeholder:"Cabin Class", :class =>  'form-control') %>
      <%= text_field_tag(:maxStops, nil, placeholder:"Stops", :class =>  'form-control') %> 
-  </div>
-  <div class="form-group">
+<!--   </div>
+  <div class="form-group"> -->
     <%= date_field_tag(:departDate, Date.tomorrow, :class =>  'form-control', required: true) %> <%= date_field_tag(:returnDate, Date.tomorrow+3, required: true) %>
     <%= text_field_tag(:permittedCarrier, nil, placeholder:"Preferred Airlines",  :class =>  'form-control') %> <%= text_field_tag(:prohibitedCarrier, nil, placeholder:"Prohibited Airlines",  :class =>  'form-control') %>
-  </div>
-  <div class="form-group">
+<!--   </div>
+  <div class="form-group"> -->
     <%= number_field_tag(:adultCount, nil, placeholder:"Adults", in: 1..10, :class =>  'form-control',required: true) %>
-    <%= number_field_tag(:childCount, nil,  in: 1..10,placeholder:"Children", :class =>  'form-control') %>
-    <%= number_field_tag(:maxPrice, nil, min: 0, placeholder:"Max Price USD",  :class =>  'form-control', required: true) %>
-  </div>
-  <div class="form-group">
+    <%= number_field_tag(:childCount, nil,  in: 0..10,placeholder:"Children", :class =>  'form-control') %>
     
+<!--   </div>
+  <div class="form-group"> -->
+    <%= number_field_tag(:maxPrice, nil, min: 0, placeholder:"Max Price USD",  :class =>  'form-control', required: true) %>
   </div> 
     <%= submit_tag("Search", :class => 'btn btn-raised btn-primary', :'data-toggle' => "modal", :id => 'searcher')%>
   <% end %>

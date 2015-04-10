@@ -18,7 +18,10 @@ body.container-fluid {
  }
  form#search-input {
  	padding: 15px;
- 	height: 240px;
+ 	/*height: 240px;*/
+  margin-left: auto;
+  margin-right: auto;
+  width: 73%;
  }
  input#adultCount {
  	/*width: 85px;*/
@@ -56,6 +59,7 @@ input#searcher {
  h3#ui-id-3 {
  	padding: 5px;
  }
+
  .results {
  	display: none;
  	margin-right: auto;
@@ -70,31 +74,38 @@ input#searcher {
  }
 
  .alerts {
- 	width: 70%;
+ 	width: 60%;
  	margin-right: auto;
  	margin-left: auto;
 
  }
 
  .search {
- 	width: 45%;
+ 	width: 39%;
  	margin-right: auto;
  	margin-left: auto;
-
  }
 
+ #loading {
+  display: none;
+  margin: 0 auto;
+  height: auto;
+  width: 40%;
+}
+
  .logBox {
- 	width: 50%;
+ 	width: 350px;
  	background-color: rgba(255, 255, 255, 0.52);
  	margin-right: auto;
  	margin-left: auto;
  	min-width: 320px;
  }
  .logFields {
- 	text-align: center;
+ 	text-align: right;
  	margin-right: auto;
  	margin-left: auto;
  	font-size: 12pt;
+  width: 70%;
  }
  .signFields {
  	text-align: end;
@@ -201,14 +212,43 @@ background-color: #FFEB3B !important;
   color:  #00bcd4 !important;
 }
 
-.table-striped>tbody>tr:nth-of-type(odd) {
+/*.table-striped>tbody>tr:nth-of-type(odd) {
   background-color: #00bcd4;
 }
 
 .table-striped>tbody>tr:nth-of-type(odd) {
-  background-color: #FFEB3B;
-}
+  background-color: #FFF;
+}*/
 
 tr:hover {
   background-color: lightyellow;
+}
+
+th {
+  font-size: 9pt;
+}
+
+.btn-primary:not(.btn-link):not(.btn-flat) {
+  background-color: #00bcd4;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+table.table.table-striped {
+  border-spacing: 0;
+}
+input.btn.btn-raised.btn-warning.delBtn {
+  width: 120px;
+  padding: 4px;
+  margin-right: 15px;
+}
+
+.alerts.col-lg-6.col-md-6.col-sm-6 {
+  float: left;
+}
+.search.col-lg-6.col-md-6.col-sm-6 {
+  float: right;
+}
+.btn-primary:not(.btn-link):not(.btn-flat) {
+  color: rgba(255, 255, 255, 0.84);
+  background-color: #00bcd4;
 }
