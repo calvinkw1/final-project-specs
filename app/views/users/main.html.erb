@@ -1,11 +1,12 @@
 <!-- <h1>User Home</h1> -->
 <div class="row .row">
-<h2>Welcome back, <%= @user.first_name %></h2>
+<h2 class="greet">Hey, <%= @user.first_name %></h2>
 
 <div class="alerts col-lg-6 col-md-6 col-sm-6">
-<div class="bs-component well" data-example-id="hoverable-table">
-  
-    <table class="table-striped table-hover">
+ 
+<div class="bs-component well" data-example-id="hoverable-table" id="saved">
+ 
+    <table class="table-striped table-hover" >
       <thead>
         <tr>
           <th>Saved Alerts</th><th>Origin - Destination</th><th>Depart - Return</th><th>Passengers: Adult/Children</th><th>Max Price</th><th>Cabin Class</th><th>Preferred Airlines / Prohibited Airlines</th>
@@ -42,7 +43,7 @@
      <%= text_field_tag(:maxStops, nil, placeholder:"Stops", :class =>  'form-control') %> 
 <!--   </div>
   <div class="form-group"> -->
-    <%= date_field_tag(:departDate, Date.tomorrow, :class =>  'form-control', required: true) %> <%= date_field_tag(:returnDate, Date.tomorrow+3, required: true) %>
+    <%= date_field_tag(:departDate, Date.tomorrow, :class =>  'form-control', required: true) %> <%= date_field_tag(:returnDate, Date.tomorrow+3, required: true, :class =>  'form-control') %>
     <%= text_field_tag(:permittedCarrier, nil, placeholder:"Preferred Airlines",  :class =>  'form-control') %> <%= text_field_tag(:prohibitedCarrier, nil, placeholder:"Prohibited Airlines",  :class =>  'form-control') %>
 <!--   </div>
   <div class="form-group"> -->
@@ -78,3 +79,4 @@
   </table>
 </div>
 </div>
+<!-- <div id="flip"> <button type="button" class="btn btn-raised btn-primary" >Hide</button> </div> -->
