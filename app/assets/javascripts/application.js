@@ -15,4 +15,4 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery-ui
-//= require bootstrap
+//= require bootstrap-material-design

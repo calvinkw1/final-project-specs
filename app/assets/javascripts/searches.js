@@ -137,7 +137,7 @@ $(document).ready(function() {
   }
 
   $(function() {
-    $(".alerts").accordion({collapsible:true});
+    // $(".alerts").accordion({collapsible:true});
     // $(".search").accordion({collapsible:true, active: true});
   });
 
