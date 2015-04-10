@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui/datepicker
+ *= require bootstrap
  */
 
 
@@ -33,10 +34,10 @@
 }
 
 .alerts {
-  width: 80%;
+  /*width: 80%;*/
 }
 
 .search {
-  width: 50%;
+  /*width: 50%;*/
 }
 
