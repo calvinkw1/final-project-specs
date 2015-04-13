@@ -108,27 +108,29 @@ $(document).ready(function() {
           // out += "<td>" + results[i].slice[0].segment[0].leg[0].origin + "</td>";
           $("#results").append("<tr id='result-row" + i + "'>");
           // Outbound flights
-          $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].origin + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].destination + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].departureTime + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].arrivalTime + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].pricing[0].passengers.adultCount + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].cabin + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].flight.carrier + " " + results[i].slice[0].segment[0].flight.number + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].aircraft + "</td>");
+          $("#result-row" + i).append("<td> <div class='ticket well'> <div class='travelTime'> <div class='places'>" + results[i].slice[0].segment[0].leg[0].origin + " / " +
+            results[i].slice[0].segment[0].leg[0].destination + "</div> <div class='times'>" +
+          
+           results[i].slice[0].segment[0].leg[0].departureTime.split('T') + " / " + results[i].slice[0].segment[0].leg[0].arrivalTime.split('T') + "</div> </div> <div class='planeInfo'>" +
+          
+            "Passengers: " + results[i].pricing[0].passengers.adultCount + " " +
+            "Cabin: " + results[i].slice[0].segment[0].cabin + " " +
+            "Flight #: " + results[i].slice[0].segment[0].flight.carrier + " " + results[i].slice[0].segment[0].flight.number + " " +
+            "Aircraft: " + results[i].slice[0].segment[0].leg[0].aircraft + "</div></div></td>");
           // Inbound flights
-          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].origin + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].destination + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].departureTime + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].arrivalTime + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].pricing[0].passengers.adultCount + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].cabin + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].flight.carrier + " " + results[i].slice[0].segment[0].flight.number + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].aircraft + "</td>");
+          $("#result-row" + i).append("<td> <div class='ticket well'> <div class='travelTime'> <div class='places'>" + results[i].slice[1].segment[0].leg[0].origin + " / " +
+            results[i].slice[1].segment[0].leg[0].destination + "</div> <div class='times'>" +
+          
+          results[i].slice[1].segment[0].leg[0].departureTime.split('T') + " / " + results[i].slice[1].segment[0].leg[0].arrivalTime.split('T') + "</div> </div> <div class='planeInfo'>" +
+      
+          "Passengers: " + results[i].pricing[0].passengers.adultCount + " " +
+          "Cabin: " + results[i].slice[1].segment[0].cabin + " " +
+          "Flight #: " + results[i].slice[1].segment[0].flight.carrier + " " + results[i].slice[0].segment[0].flight.number + " " +
+          "Aircraft: " + results[i].slice[1].segment[0].leg[0].aircraft +  "</div></div></td>");
           // Fare calculation includes both Outbound and Inbound totals
-          $("#result-row" + i).append("<td>" + results[i].pricing[0].baseFareTotal + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].pricing[0].saleTaxTotal + "</td>");
-          $("#result-row" + i).append("<td>" + results[i].saleTotal + "</td>");
+          $("#result-row" + i).append("<td> <div class='pricing'>" + results[i].pricing[0].baseFareTotal + " " +
+          results[i].pricing[0].saleTaxTotal + " " +
+          results[i].saleTotal + "</div></td>");
         }
                 // $("body").scrollTo("#results");
 
@@ -206,6 +208,47 @@ $(".alert-danger" ).fadeOut(6000);
 
 $(".alert-warning" ).fadeOut(6000);
 
+  // success: function(data) {
+  //       $("#loading").hide();
+  //       $(".results").show();
+  //       $("#save-search").show();
+  //       $("#results").empty();
+  //       console.log(data);
+  //       results = data.results.trips.tripOption;
+  //       flightData = data.results.trips.data;        
+  //       for (var i = 0; i < results.length; i++) {
+  //         // build on the below to avoid appending over and over again, and to avoid breakage from the append.
+  //         // var out = "<tr id='result-row" + i + "'>";
+  //         // out += "<td>" + results[i].slice[0].segment[0].leg[0].origin + "</td>";
+  //         $("#results").append("<tr id='result-row" + i + "'>");
+  //         // Outbound flights
+  //         $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].origin + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].destination + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].departureTime + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].arrivalTime + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].pricing[0].passengers.adultCount + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].cabin + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].flight.carrier + " " + results[i].slice[0].segment[0].flight.number + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].slice[0].segment[0].leg[0].aircraft + "</td>");
+  //         // Inbound flights
+  //         $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].origin + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].destination + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].departureTime + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].arrivalTime + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].pricing[0].passengers.adultCount + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].cabin + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].flight.carrier + " " + results[i].slice[0].segment[0].flight.number + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].slice[1].segment[0].leg[0].aircraft + "</td>");
+  //         // Fare calculation includes both Outbound and Inbound totals
+  //         $("#result-row" + i).append("<td>" + results[i].pricing[0].baseFareTotal + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].pricing[0].saleTaxTotal + "</td>");
+  //         $("#result-row" + i).append("<td>" + results[i].saleTotal + "</td>");
+  //       }
+  //               // $("body").scrollTo("#results");
+
+  //     }
+  //   });
+  // }
 
 
 });
