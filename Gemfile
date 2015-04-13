@@ -30,7 +30,7 @@ gem 'mandrill-api', require: 'mandrill'
 gem 'sidekiq'
 gem 'jquery-ui-rails', '~> 5.0.3'
 gem 'json', '~> 1.8.2'
-gem "figaro"
+gem 'figaro'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'sidekiq-scheduler', '~> 1'
