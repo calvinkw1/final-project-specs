@@ -2,7 +2,7 @@
 <div class="loginOut">
 <% if session[:user_id] %>
   <div class="signBox">
-  <%= link_to "Logout", logout_path %>
+  <%= link_to "Logout", logout_path, :class => "logLink"%>
   </div>
 <% else %> 
 <div class="signBox">

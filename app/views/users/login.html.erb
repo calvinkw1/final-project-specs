@@ -1,25 +1,26 @@
-<div class="logBox">
+<div class="logBox well">
   <h2 class="title">Welcome to get me flights,
   <br>please login to continue.</h1>
 
-  <%= form_tag login_path do %>
+  <%= form_tag login_path, :class =>  'form-horizontal' do %>
   <div class="logFields">
-    <p>
-      <%= label_tag(:email)%> <br>
-      <%= text_field_tag(:email, params[:email], autofocus: true)%>
-    </p>
-    <p>
-      <%= label_tag(:password)%> <br>
-      <%= password_field_tag(:password)%>
-    </p>
+    <!-- <p> -->
+      <%= label_tag(:email)%> <!-- <br> -->
+      <%= text_field_tag(:email, params[:email], :class => 'form-control', autofocus: true,required: true)%>
+    <!-- </p> -->
+    <!-- <p> --> <br>
+      <%= label_tag(:password)%> <!-- <br> -->
+      <%= password_field_tag(:password, required: true)%>
+    <!-- </p> -->
   </div>
   <div class="links">
-  <p>
+  <!-- <p> -->
     <%= submit_tag("Log in", class: "btn btn-primary") %>
-  </p>
+  <!-- </p> -->
   <% end %>
-
+<p>
   <%= link_to "Don't have an account? Sign up here", signup_path%>
-  <br>
+  </p>
+ 
   </div>
 </div>

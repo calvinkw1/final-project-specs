@@ -137,8 +137,8 @@ $(document).ready(function() {
   }
 
   $(function() {
-    $(".alerts").accordion({collapsible:true});
-    $(".search").accordion({collapsible:true, active: true});
+    // $(".alerts").accordion({collapsible:true});
+    // $(".search").accordion({collapsible:true, active: true});
   });
 
   $("#save").click(function(e) {

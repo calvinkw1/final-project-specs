@@ -1,170 +1,284 @@
 body.container-fluid {
   background-image:url('<%= asset_path("Sunriseairplane.jpg") %> ');
-	background-size: cover;
+  background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-	background-color: rgba(255, 255, 255, 0.52);
+  background-color: rgba(255, 255, 255, 0.52);
 }
-/*.opacity {
+.page-header {
+  background-color: #00bcd4;
+  /*height: 125px;*/
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  margin-bottom: 125px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+}
+
+.UI {
+  margin-top: 140px;
+}
+
+.alerts.col-lg-6.col-md-6.col-sm-6 {
+  float: left;
+}
+.search.col-lg-6.col-md-6.col-sm-6 {
+  float: right;
+}
+
+.form-control {
+  text-align: center;
+  background-color: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#d2d2d2, #d2d2d2);
+}
+
+input {
+  width: 150px;
+  height: 26px;
+  margin: 5px;
+}
+form#search-input {
+  padding: 15px;
+  /*height: 240px;*/
+  margin-left: auto;
+  margin-right: auto;
+  width: 73%;
+}
+input#adultCount {
+  /*width: 85px;*/
+}
+input#childCount {
+  /*width: 85px;*/
+}
+input#maxPrice {
+  /*width: 123px;*/
+}
+input#searcher {
+  background-color: #00bcd4;
+}
+
+input#departDate {
+  text-align: right;
+}
+
+input#returnDate {
+  text-align: right;
+}
+input.btn.btn-raised.btn-warning.delBtn {
+  width: 120px;
+  padding: 4px;
+  margin-right: 15px;
+}
+
+
+h1.header {
+  font-size: 36px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: -4px -2px 8px #948887;
+}
+h2.title {
+  text-align: center;
+  padding: 35px;
+  color: #ffffff;
+}
+h2.greet {
+  /*text-align: center;*/
+  /*padding: 35px;*/
+  color: #ffffff;
+  position: absolute;
+  top: 10px;
+  left: 30px;
+}
+
+h3.header {
+  text-align: center;
+  color: #ffffff;
+  text-shadow: -4px -2px 8px #948887;
+}
+
+h3#ui-id-1{
+  padding: 5px; 
+}
+
+h3#ui-id-3 {
+  padding: 5px;
+}
+
+.results {
+  display: none;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#save-search {
+  display: none;
+  text-align: right;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.alerts {
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+.search {
+  width: 39%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#loading {
+  display: none;
+  margin: 0 auto;
+  height: auto;
+  width: 40%;
+}
+
+.logBox {
+  width: 350px;
+  background-color: rgba(255, 255, 255, 0.52);
+  margin-right: auto;
+  margin-left: auto;
+  min-width: 320px;
+}
+.logFields {
+  text-align: right;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 12pt;
+  width: 70%;
+}
+.signFields {
+  text-align: end;
+  margin-right: auto;
+  margin-left: auto;
+  /*font-size: 18pt;*/
+  width: 50%;
+}
+
+.links {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+a.logLink {
+  color: #fff;
+}
+
+input.btn.btn-primary {
+  border-radius: 0px;
+}
+
+.text-center.alert.alert-danger{
+  border-radius: 0px;
   width: 100vw;
-  height: 100vh;
-  background-color: rgba(252, 252, 252, 0.39);
- }
- */
- input {
- 	width: 150px;
- 	height: 26px;
- 	margin: 5px;
- }
- form#search-input {
- 	padding: 15px;
- 	height: 240px;
- }
- input#adultCount {
- 	width: 85px;
- }
- input#childCount {
- 	width: 85px;
- }
- input#maxPrice {
- 	width: 123px;
- }
+  height: 100px;
+}
 
- h1.header {
- 	font-size: 49px;
- 	text-align: center;
- 	color: #ffffff;
- 	text-shadow: -4px -2px 8px #948887;
- }
- h3.header {
- 	text-align: center;
- 	color: #ffffff;
- 	text-shadow: -4px -2px 8px #948887;
- }
+.text-center.alert.alert-success {
+  border-radius: 0px;
+  width: 100vw;
+  height: 100px;
+}
+.text-center.alert.alert-warning {
+  border-radius: 0px;
+  width: 100vw;
+  height: 100px;
+  background-color: #FFEB3B;
+}
 
- h3#ui-id-1{
- 	padding: 5px;	
- }
+.loginOut {
+  float: right;
+  margin-top: -60px;
+}
 
- h3#ui-id-3 {
- 	padding: 5px;
- }
- .results {
- 	display: none;
- 	margin-right: auto;
- 	margin-left: auto;
- }
-
- #save-search {
- 	display: none;
- 	text-align: right;
- 	margin-right: auto;
- 	margin-left: auto;
- }
-
- .alerts {
- 	width: 70%;
- 	margin-right: auto;
- 	margin-left: auto;
-
- }
-
- .search {
- 	width: 45%;
- 	margin-right: auto;
- 	margin-left: auto;
-
- }
-
- .logBox {
- 	width: 50%;
- 	background-color: rgba(255, 255, 255, 0.52);
- 	margin-right: auto;
- 	margin-left: auto;
- 	min-width: 320px;
- }
- .logFields {
- 	text-align: center;
- 	margin-right: auto;
- 	margin-left: auto;
- 	font-size: 12pt;
- }
- .signFields {
- 	text-align: end;
- 	margin-right: auto;
- 	margin-left: auto;
- 	/*font-size: 18pt;*/
- 	width: 50%;
- }
-
- h2.title {
- 	text-align: center;
- 	padding: 35px;
- }
-
- .links {
- 	text-align: center;
- 	margin-top: 30px;
- 	margin-bottom: 30px;
- 	padding-bottom: 20px;
- }
-
- input.btn.btn-primary { 
- 	border-radius: 0px;
- }
-
- .text-center.alert.alert-danger{
- 	border-radius: 0px;
- 	width: 100vw;
- 	height: 100px;
- }
-
- .text-center.alert.alert-success {
- 	border-radius: 0px;
- 	width: 100vw;
- 	height: 100px;
- }
- .text-center.alert.alert-warning {
- 	border-radius: 0px;
- 	width: 100vw;
- 	height: 100px;
- }
-
- .loginOut {
- 	float: right;
- 	margin-top: -60px;
- }
-
- .alert {
- 	position: fixed;
- 	width: 100%;
- 	top: 0;
- 	left: 0;
- 	font-size: 20pt;
- }
- .signBox {
- 	font-size: 14pt;
- 	padding-right: 11px;  
- }
- .footer {
+.alert {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  font-size: 20pt;
+}
+.signBox {
+  font-size: 14pt;
+  padding-right: 11px;
+}
+.footer {
   text-align: right;
   position: fixed;
   bottom: 10px;
   right: 35px;
   width: 100vw;
-  color: #fff;
-  /* background-color: rgba(0, 0, 0, 0.74); */
+  color: rgba(255, 255, 255, 0.65);
   height: 70px;
   margin-left: -15px;
   margin-right: -15px;
   z-index: -9999;
+
 }
 
- div#loading {
- 	text-align: center;
- }
+div#loading {
+  text-align: center;
+}
 
- .table-header {
+.table-header {
   font-size: 17px;
   font-weight: bold; 
- }
+}
+
+table {
+  border-collapse: collapse;
+}
+table#saved {
+  display: block;
+}
+
+tr:hover {
+  background-color: #00bcd4;
+}
+
+th {
+  font-size: 9pt;
+}
+td {
+  font: normal normal normal 12px/normal '.HelveticaNeueDeskInterface-Regular';
+  text-align: center;
+}
+
+
+.btn-warning:not(.btn-link):not(.btn-flat) {
+  background-color: #FFEB3B !important;
+  color:  #00bcd4 !important;
+}
+
+.btn-primary:not(.btn-link):not(.btn-flat) {
+  background-color: #00bcd4 !important;
+  color: rgba(255, 255, 255, 0.84);
+}
+button#save {
+  margin-right: 47%;
+}
+
+/*Styling for results*/
+
+.ticket.well {
+}
+
+.travelTime {
+}
+
+.places {
+  float: left;
+  font-size: 14pt;
+}
+
+.times {
+}
+
+.planeInfo {
+}
