@@ -1,8 +1,8 @@
 <div class="logBox well">
   <h2 class="title">Welcome to get me flights,
-  <br>please login to continue.</h2>
+  <br>please login to continue.</h1>
 
-  <%= form_tag login_path, :class =>  'form-horizontal', html: {:class => "form-control"} do %>
+  <%= form_tag login_path, :class =>  'form-horizontal' do %>
   <div class="logFields">
     <!-- <p> -->
       <%= label_tag(:email)%> <!-- <br> -->
@@ -10,7 +10,7 @@
     <!-- </p> -->
     <!-- <p> --> <br>
       <%= label_tag(:password)%> <!-- <br> -->
-      <%= password_field_tag(:password,required: true)%>
+      <%= password_field_tag(:password, required: true)%>
     <!-- </p> -->
   </div>
   <div class="links">

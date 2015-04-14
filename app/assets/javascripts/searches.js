@@ -106,36 +106,34 @@ $(document).ready(function() {
           // build on the below to avoid appending over and over again, and to avoid breakage from the append.
           // var out = "<tr id='result-row" + i + "'>";
           // out += "<td>" + results[i].slice[0].segment[0].leg[0].origin + "</td>";
-          $("#results").append("<tr class='well ticketWell' id='result-row" + i + "'>");
+          $("#results").append("<tr id='result-row" + i + "'>");
           // Outbound flights
-          $("#result-row" + i).append("<td> <div class='ticket'> <div class='travelTime'> <div class='places'>" +
-            results[i].slice[0].segment[0].leg[0].origin + " to " +
-            results[i].slice[0].segment[0].leg[0].destination + "</div> <div class='times'>Leave:" +
+          $("#result-row" + i).append("<td> <div class='ticket well'> <div class='travelTime'> <div class='places'>" +
+            results[i].slice[0].segment[0].leg[0].origin + " / " +
+            results[i].slice[0].segment[0].leg[0].destination + "</div> <div class='times'>" +
           
-            results[i].slice[0].segment[0].leg[0].departureTime.split('T')[1].split('-')[0] + " / Arrive:" +
-            results[i].slice[0].segment[0].leg[0].arrivalTime.split('T')[1].split('-')[0] + "</div> </div> <div class='planeInfo'>" +
+            results[i].slice[0].segment[0].leg[0].departureTime.split('T')[1] + " / " +
+            results[i].slice[0].segment[0].leg[0].arrivalTime.split('T')[1] + "</div> </div> <div class='planeInfo'>" +
           
-            "Passengers: " + results[i].pricing[0].passengers.adultCount + "<br>" +
-            "Cabin: " + results[i].slice[0].segment[0].cabin + "<br>" +
-            "Flight #: " + results[i].slice[0].segment[0].flight.carrier + " " + results[i].slice[0].segment[0].flight.number + "<br>" +
+            "Passengers: " + results[i].pricing[0].passengers.adultCount + " " +
+            "Cabin: " + results[i].slice[0].segment[0].cabin + " " +
+            "Flight #: " + results[i].slice[0].segment[0].flight.carrier + " " + results[i].slice[0].segment[0].flight.number + " " +
             "Aircraft: " + results[i].slice[0].segment[0].leg[0].aircraft + "</div></div></td>");
           // Inbound flights
-          $("#result-row" + i).append("<td> <div class='ticket'> <div class='travelTime'> <div class='places'>" + 
-            results[i].slice[1].segment[0].leg[0].origin + " to " +
-            results[i].slice[1].segment[0].leg[0].destination + "</div> <div class='times'>Leave:" +
+          $("#result-row" + i).append("<td> <div class='ticket well'> <div class='travelTime'> <div class='places'>" + results[i].slice[1].segment[0].leg[0].origin + " / " +
+            results[i].slice[1].segment[0].leg[0].destination + "</div> <div class='times'>" +
           
-          results[i].slice[1].segment[0].leg[0].departureTime.split('T')[1].split('-')[0] + " / Arrive:" +
-          results[i].slice[1].segment[0].leg[0].arrivalTime.split('T')[1].split('-')[0] + "</div> </div> <div class='planeInfo'>" +
+          results[i].slice[1].segment[0].leg[0].departureTime.split('T')[1] + " / " +
+          results[i].slice[1].segment[0].leg[0].arrivalTime.split('T')[1] + "</div> </div> <div class='planeInfo'>" +
       
-          "Passengers: " + results[i].pricing[0].passengers.adultCount + "<br>" +
+          "Passengers: " + results[i].pricing[0].passengers.adultCount + " <br>" +
           "Cabin: " + results[i].slice[1].segment[0].cabin + " <br>" +
           "Flight #: " + results[i].slice[1].segment[0].flight.carrier + " " + results[i].slice[0].segment[0].flight.number + "<br> " +
           "Aircraft: " + results[i].slice[1].segment[0].leg[0].aircraft +  "</div></div></td>");
           // Fare calculation includes both Outbound and Inbound totals
-          $("#result-row" + i).append("<td> <div class='pricing'>" +
-          "Sub Total: " + results[i].pricing[0].baseFareTotal + "<br>" +
-          "Taxes & Fees: " + results[i].pricing[0].saleTaxTotal + "<br>" +
-          "Total: " +results[i].saleTotal + "</div></td>");
+          $("#result-row" + i).append("<td> <div class='pricing'>" + results[i].pricing[0].baseFareTotal + " " +
+          results[i].pricing[0].saleTaxTotal + " " +
+          results[i].saleTotal + "</div></td>");
         }
                 // $("body").scrollTo("#results");
 

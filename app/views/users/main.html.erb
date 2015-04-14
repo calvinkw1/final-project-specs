@@ -7,20 +7,20 @@
  
     <table class="table-striped table-hover" >
       <thead>
-        <tr> 
-          <th><p>Saved Alerts</p></th><th>Origin<br>Destination</th><th>Depart<br>Return</th><th>Passengers:<br>Adult/Children</th><th>Max Price</th><th>Cabin Class</th><th>Preferred Airlines / Prohibited Airlines</th>
+        <tr>
+          <th>Saved Alerts</th><th>Origin - Destination</th><th>Depart - Return</th><th>Passengers: Adult/Children</th><th>Max Price</th><th>Cabin Class</th><th>Preferred Airlines / Prohibited Airlines</th>
         </tr>
       </thead>
       <tbody id="alerts">
         <% @alerts.each do |alert| %>
           <tr class="info">
-          <td> <%= button_to "Delete Alert", delete_alert_path(alert), :class => 'btn btn-raised btn-warning delBtn', method: :delete, data: { confirm: "Are you sure you want to remove this alert?"} %> </td>
-            <td> <%= alert.origin %> - <%= alert.destination %> </td>
-            <td> <%= alert.departDate.split("-")[1] %>/<%= alert.departDate.split("-")[2] %>/<%= alert.departDate.split("-")[0] %> <br> <%= alert.returnDate.split("-")[1] %>/<%= alert.returnDate.split("-")[2] %>/<%= alert.returnDate.split("-")[0] %> </td>
-            <td> <%= alert.adultCount %> / <%= alert.childCount %> </td>
-            <td> $<%= alert.maxPrice.split("D")[1].split(".")[0] %> </td>
-            <td> <%= alert.preferredCabin %> </td>
-            <td> <%= alert.permittedCarrier %> / <%= alert.prohibitedCarrier %>  </td>        
+          <td><%= button_to "Delete Alert", delete_alert_path(alert), :class => 'btn btn-raised btn-warning delBtn', method: :delete, data: { confirm: "Are you sure you want to remove this alert?"} %></td>
+            <td><%= alert.origin %> - <%= alert.destination %></td>
+            <td><%= alert.departDate %> - <%= alert.returnDate %></td>
+            <td><%= alert.adultCount %> / <%= alert.childCount %></td>
+            <td>$<%= alert.maxPrice.split("D")[1].split(".")[0] %></td>
+            <td><%= alert.preferredCabin %></td>
+            <td><%= alert.permittedCarrier %> / <%= alert.prohibitedCarrier %> </td>        
           </tr>
         <% end %>
       </tbody>
@@ -57,8 +57,8 @@
   <% end %>
 </div>
 </div>
-<!-- </div>
-<div class="row"> -->
+</div>
+<div class="row">
 <div id="save-search">
   <button type="button" class="btn btn-raised btn-primary" id="save" >Save this Search!</button>
 </div>
