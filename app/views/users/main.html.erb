@@ -18,7 +18,7 @@
             <td><%= alert.origin %> - <%= alert.destination %></td>
             <td><%= alert.departDate %> - <%= alert.returnDate %></td>
             <td><%= alert.adultCount %> / <%= alert.childCount %></td>
-            <td><%= alert.maxPrice %></td>
+            <td>$<%= alert.maxPrice.split("D")[1].split(".")[0] %></td>
             <td><%= alert.preferredCabin %></td>
             <td><%= alert.permittedCarrier %> / <%= alert.prohibitedCarrier %> </td>        
           </tr>
@@ -70,7 +70,7 @@
   <table class="table table-striped">
     <thead class="table-header">
       <tr>
-        <td>Departure Trip</td><td>Return Trip</td><td>Base Fare - Sale Tax - Total Fare</td>
+        <td>Departure Trip</td><td>Return Trip</td><td>Cost</td>
       </tr>
     </thead>
     <tbody id="results">
