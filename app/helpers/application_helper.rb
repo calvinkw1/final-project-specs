@@ -6,9 +6,10 @@ module ApplicationHelper
       # iterate thru iVar to check if price matches saved budget
       # if match, then fire off email to user
       reqBody = params[:qpxData] # pass in the stringified json obj here from the alerts table
+
       budget = 870.00
       flightRequest = Typhoeus::Request.new(
-        "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyDE6F79FbnrSc9hZlurECTyBJoEyHCj-Nc",
+        "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + ENV["QPX_API_KEY"],
         method: :post,
         headers: {'Content-Type'=> "application/json; charset=utf-8"},
         body: reqBody,
