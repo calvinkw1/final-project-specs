@@ -1,3 +1,3 @@
 $(document).ready(function() {
-  $( "#password" ).addClass( "form-control" );
+  // $( "#password" ).addClass( "form-control" );
 });
