@@ -1,16 +1,16 @@
-<h3 class="header">Sign up today</h3>
-<div class="logBox">
-<h2 class="title">Find your trip, for your price!</h2>
+
+<div class="logBox well">
+<h2 class="title">Sign up today, Find your trip, for your price!</h2>
 <div class="signFields">
 <%= form_tag create_user_path, method: "post", id:"user-input" do %>
 
-  <%= label_tag(:first_name, "First Name", autofocus: true) %> <%= text_field_tag(:first_name) %> <br>
-  <%= label_tag(:last_name, "Last Name") %>  <%= text_field_tag(:last_name) %> <br>
+  <%= label_tag(:first_name, "First Name", autofocus: true) %> <%= text_field_tag(:first_name, nil,:class => 'form-control') %> <br>
+  <%= label_tag(:last_name, "Last Name") %>  <%= text_field_tag(:last_name, nil,:class => 'form-control',) %> <br>
 
   <%= label_tag(:email, "email") %> 
-  <%= text_field_tag(:email) %> <br>
+  <%= text_field_tag(:email, nil,:class => 'form-control',) %> <br>
   <%= label_tag(:password, "Password") %> 
-  <%= password_field_tag(:password) %> 
+  <%= password_field_tag(:password, nil,:class => 'form-control',) %> 
  <br>
  </div>
   <div class="links">
