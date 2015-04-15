@@ -80,7 +80,7 @@ h1.header {
 h2.title {
   text-align: center;
   padding: 35px;
-  color: #ffffff;
+  color: #00BCD4;border-right-style: ;
 }
 h2.greet {
   /*text-align: center;*/
@@ -98,7 +98,7 @@ h3.header {
 }
 
 h3#ui-id-1{
-  padding: 5px; 
+  padding: 5px;	
 }
 
 h3#ui-id-3 {
@@ -132,10 +132,10 @@ h3#ui-id-3 {
 }
 
 #loading {
-  display: none;
+  display: none; 
   margin: 0 auto;
-  height: auto;
-  width: 40%;
+  width: 100%;
+  zoom: 1.9;
 }
 
 .logBox {
@@ -192,6 +192,11 @@ input.btn.btn-primary {
   background-color: #FFEB3B;
 }
 
+.text-center.alert {
+  text-align: center;
+  z-index: 99999;
+}
+
 .loginOut {
   float: right;
   margin-top: -60px;
@@ -209,146 +214,6 @@ input.btn.btn-primary {
   padding-right: 11px;
 }
 .footer {
-  height: 100vh;
-  background-color: rgba(252, 252, 252, 0.39);
- }
-
- input {
- 	width: 150px;
- 	height: 26px;
- 	margin: 5px;
- }
- form#search-input {
- 	padding: 15px;
- 	height: 240px;
- }
- input#adultCount {
- 	width: 85px;
- }
- input#childCount {
- 	width: 85px;
- }
- input#maxPrice {
- 	width: 123px;
- }
-
- h1.header {
- 	font-size: 49px;
- 	text-align: center;
- 	color: #ffffff;
- 	text-shadow: -4px -2px 8px #948887;
- }
- h3.header {
- 	text-align: center;
- 	color: #ffffff;
- 	text-shadow: -4px -2px 8px #948887;
- }
-
- h3#ui-id-1{
- 	padding: 5px;	
- }
-
- h3#ui-id-3 {
- 	padding: 5px;
- }
- .results {
- 	display: none;
- 	margin-right: auto;
- 	margin-left: auto;
- }
-
- #save-search {
- 	display: none;
- 	text-align: right;
- 	margin-right: auto;
- 	margin-left: auto;
- }
-
- .alerts {
- 	width: 70%;
- 	margin-right: auto;
- 	margin-left: auto;
-
- }
-
- .search {
- 	width: 45%;
- 	margin-right: auto;
- 	margin-left: auto;
-
- }
-
- .logBox {
- 	width: 50%;
- 	background-color: rgba(255, 255, 255, 0.52);
- 	margin-right: auto;
- 	margin-left: auto;
- 	min-width: 320px;
- }
- .logFields {
- 	text-align: center;
- 	margin-right: auto;
- 	margin-left: auto;
- 	font-size: 12pt;
- }
- .signFields {
- 	text-align: end;
- 	margin-right: auto;
- 	margin-left: auto;
- 	/*font-size: 18pt;*/
- 	width: 50%;
- }
-
- h2.title {
- 	text-align: center;
- 	padding: 35px;
- }
-
- .links {
- 	text-align: center;
- 	margin-top: 30px;
- 	margin-bottom: 30px;
- 	padding-bottom: 20px;
- }
-
- input.btn.btn-primary { 
- 	border-radius: 0px;
- }
-
- .text-center.alert.alert-danger{
- 	border-radius: 0px;
- 	width: 100vw;
- 	height: 100px;
- }
-
- .text-center.alert.alert-success {
- 	border-radius: 0px;
- 	width: 100vw;
- 	height: 100px;
- }
- .text-center.alert.alert-warning {
- 	border-radius: 0px;
- 	width: 100vw;
- 	height: 100px;
- }
-
- .loginOut {
- 	float: right;
- 	margin-top: -60px;
- }
-
- .alert {
- 	position: fixed;
- 	width: 100%;
- 	top: 0;
- 	left: 0;
- 	font-size: 20pt;
- }
- .signBox {
- 	font-size: 14pt;
- 	padding-right: 11px;  
- }
- .footer {
   text-align: right;
   position: fixed;
   bottom: 10px;
@@ -360,6 +225,19 @@ input.btn.btn-primary {
   margin-right: -15px;
   z-index: -9999;
 
+}
+thead.table-header-top {
+  background-color: #fff;
+}
+
+td.resultsTop {
+  color: #00BCD4;
+  font-size: 15pt;
+  text-align: right;
+  padding-right: 15px;
+  font-weight: normal;
+  border-bottom: solid 1px;
+  padding-bottom: 2px;
 }
 
 div#loading {
