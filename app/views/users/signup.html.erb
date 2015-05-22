@@ -1,21 +1,19 @@
 
 <div class="logBox well">
-<h2 class="title">Sign up today, Find your trip, for your price!</h2>
-<div class="signFields">
-<%= form_tag create_user_path, method: "post", id:"user-input" do %>
+  <h2 class="title">Sign up today, Find your trip, for your price!</h2>
+  <div class="signFields">
+    <%= form_tag create_user_path, method: "post", id:"user-input" do %>
+      <%= label_tag(:first_name, "First Name", autofocus: true) %> <%= text_field_tag(:first_name, nil,:class => 'form-control') %> <br>
+      <%= label_tag(:last_name, "Last Name") %>  <%= text_field_tag(:last_name, nil,:class => 'form-control',) %> <br>
 
-  <%= label_tag(:first_name, "First Name", autofocus: true) %> <%= text_field_tag(:first_name, nil,:class => 'form-control') %> <br>
-  <%= label_tag(:last_name, "Last Name") %>  <%= text_field_tag(:last_name, nil,:class => 'form-control',) %> <br>
-
-  <%= label_tag(:email, "email") %> 
-  <%= text_field_tag(:email, nil,:class => 'form-control',) %> <br>
-  <%= label_tag(:password, "Password") %> 
-  <%= password_field_tag(:password, nil,:class => 'form-control',) %> 
- <br>
- </div>
-  <div class="links">
-  <%= submit_tag("Sign Up", class: "btn btn-primary") %>
-<% end %>
-  </div>
+      <%= label_tag(:email, "email") %> 
+      <%= text_field_tag(:email, nil,:class => 'form-control',) %> <br>
+      <%= label_tag(:password, "Password") %> 
+      <%= password_field_tag(:password, nil,:class => 'form-control',) %> 
+      <br>
+      <div class="links">
+        <%= submit_tag("Sign Up", class: "btn btn-primary") %>
+      </div>
+    <% end %>
   </div>
 </div>
